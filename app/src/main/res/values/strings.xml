@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Frequência Fácil</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="senha" />
+    <string name="login" />
+    <string name="entrar" />
+    <string name="title_activity_modulo_aluno">ModuloAluno</string>
+</resources>
