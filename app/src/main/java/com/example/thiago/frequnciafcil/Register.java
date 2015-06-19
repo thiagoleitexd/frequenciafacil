@@ -27,7 +27,9 @@ public class Register extends ActionBarActivity {
     private Map<String, String> params;
     private EditText login;
     private EditText password;
+    private EditText password2;
     private EditText nome;
+    private EditText matricula;
     private String url;
 
     @Override
@@ -38,6 +40,8 @@ public class Register extends ActionBarActivity {
         nome = (EditText) findViewById(R.id.idNomeR);
         login = (EditText) findViewById(R.id.idLoginR);
         password = (EditText) findViewById(R.id.idSenhaR);
+        password2 = (EditText) findViewById(R.id.idSenha2R);
+        matricula = (EditText) findViewById(R.id.idMatriculaR);
         rq = Volley.newRequestQueue(Register.this);
     }
 
@@ -48,32 +52,47 @@ public class Register extends ActionBarActivity {
         params.put("name", nome.getText().toString());
         params.put("email", login.getText().toString());
         params.put("password", password.getText().toString());
+        params.put("matricula", matricula.getText().toString());
 
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-            //Função executada quando Houver sucesso
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("Teste2", "Sucesso: " + response);
+            if(password.getText().toString().equals(password2.getText().toString())){
 
-                Intent intent = new Intent(Register.this, MainActivity.class);
+                CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+                    //Função executada quando Houver sucesso
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Teste2", "Sucesso: " + response);
+
+                        Intent intent = new Intent(Register.this, MainActivity.class);
+                        Toast.makeText(Register.this,
+                                "Cadastro Realizado com Sucesso\nSeu login é: "+login.getText().toString(),
+                                Toast.LENGTH_LONG)
+                                .show();
+                        startActivity(intent);
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    //Função executada quando Houver Erro
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Register.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                cjor.setTag("tag");
+                rq.add(cjor);
+
+
+            }
+        else{
                 Toast.makeText(Register.this,
-                        "Cadastro Realizado com Sucesso\nSeu login é: "+login.getText().toString(),
+                        "AS senhas digitadas são diferentes.\nÉ necessário que elas sejam iguais.",
                         Toast.LENGTH_LONG)
                         .show();
-                startActivity(intent);
-
 
             }
-        }, new Response.ErrorListener() {
-            //Função executada quando Houver Erro
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Register.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        cjor.setTag("tag");
-        rq.add(cjor);
+
     }
 
     public void listartarefas(View v){
