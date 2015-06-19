@@ -23,27 +23,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MainActivity extends ActionBarActivity {
+public class Register extends ActionBarActivity {
     private RequestQueue rq;
     private Map<String, String> params;
     private EditText login;
     private EditText password;
+    private EditText nome;
     private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        url = "http://trabalhoderedes.esy.es/checkin/v1/login";
-        login = (EditText) findViewById(R.id.idLogin);
-        password = (EditText) findViewById(R.id.idSenha);
-        rq = Volley.newRequestQueue(MainActivity.this);
+        setContentView(R.layout.activity_register);
+        url = "http://trabalhoderedes.esy.es/checkin/v1/register";
+        nome = (EditText) findViewById(R.id.idNomeR);
+        login = (EditText) findViewById(R.id.idLoginR);
+        password = (EditText) findViewById(R.id.idSenhaR);
+        rq = Volley.newRequestQueue(Register.this);
     }
 
 
 
     public void callJsonobject(View v){
         params = new HashMap<String, String>();
+        params.put("name", nome.getText().toString());
         params.put("email", login.getText().toString());
         params.put("password", password.getText().toString());
 
@@ -55,11 +58,10 @@ public class MainActivity extends ActionBarActivity {
 
                 try {
 
-                    Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
+                    Intent intent = new Intent(Register.this, ModuloAluno.class);
                     intent.putExtra("apiKey", response.getString("apiKey"));
                     intent.putExtra("name", response.getString("name"));
-
-                    Toast.makeText(MainActivity.this,
+                    Toast.makeText(Register.this,
                             "Login Efetuado com Sucesso.",
                             Toast.LENGTH_SHORT)
                             .show();
@@ -67,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
                 } catch (JSONException e) {
 
-                    Toast.makeText(MainActivity.this,
+                    Toast.makeText(Register.this,
                             "Login ou Senha incorretos.",
                             Toast.LENGTH_SHORT)
                             .show();
@@ -83,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -102,7 +104,7 @@ public class MainActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,14 +116,6 @@ public class MainActivity extends ActionBarActivity {
     public void onStop(){
         super.onStop();
         rq.cancelAll("tag");
-    }
-
-
-    public void registrar(View v) {
-        System.out.println("oi");
-        Intent intent = new Intent(MainActivity.this, Register.class);
-        startActivity(intent);
-
     }
 
     @Override

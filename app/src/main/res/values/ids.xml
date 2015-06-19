@@ -2,4 +2,6 @@
 <resources>
     <item name="idLogin" type="id" />
     <item name="idSenha" type="id" />
+    <item name="idLoginR" type="id" />
+    <item name="idSenhaR" type="id" />
 </resources>

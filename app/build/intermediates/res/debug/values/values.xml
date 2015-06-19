@@ -173,7 +173,9 @@
     <!-- From: file:/home/thiago/StudioProjects/FrequenciaFacil2.0/app/src/main/res/values/ids.xml -->
     <eat-comment/>
     <item name="idLogin" type="id"/>
+    <item name="idLoginR" type="id"/>
     <item name="idSenha" type="id"/>
+    <item name="idSenhaR" type="id"/>
     <!-- From: file:/home/thiago/StudioProjects/FrequenciaFacil2.0/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <item name="progress_circular" type="id"/>
@@ -216,6 +218,7 @@
     <!-- From: file:/home/thiago/StudioProjects/FrequenciaFacil2.0/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_modulo_aluno">ModuloAluno</string>
+    <string name="title_activity_register">Register</string>
     <!-- From: file:/home/thiago/StudioProjects/FrequenciaFacil2.0/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
