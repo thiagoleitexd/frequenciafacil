@@ -16,7 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -44,7 +43,7 @@ public class Register extends ActionBarActivity {
 
 
 
-    public void callJsonobject(View v){
+    public void callJsonobject2(View v){
         params = new HashMap<String, String>();
         params.put("name", nome.getText().toString());
         params.put("email", login.getText().toString());
@@ -56,28 +55,12 @@ public class Register extends ActionBarActivity {
             public void onResponse(JSONObject response) {
                 Log.i("Teste2", "Sucesso: " + response);
 
-                try {
-
-                    Intent intent = new Intent(Register.this, ModuloAluno.class);
-                    intent.putExtra("apiKey", response.getString("apiKey"));
-                    intent.putExtra("name", response.getString("name"));
-                    Toast.makeText(Register.this,
-                            "Login Efetuado com Sucesso.",
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                    startActivity(intent);
-                } catch (JSONException e) {
-
-                    Toast.makeText(Register.this,
-                            "Login ou Senha incorretos.",
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                    e.printStackTrace();
-
-                }
-
+                Intent intent = new Intent(Register.this, MainActivity.class);
+                Toast.makeText(Register.this,
+                        "Cadastro Realizado com Sucesso\nSeu login é: "+login.getText().toString(),
+                        Toast.LENGTH_LONG)
+                        .show();
+                startActivity(intent);
 
 
             }

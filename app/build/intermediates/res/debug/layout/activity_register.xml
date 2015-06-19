@@ -12,7 +12,7 @@ tools:context="com.example.thiago.frequnciafcil.Register">
     android:layout_height="wrap_content"
     android:text="Registrar"
     android:id="@+id/idCadastrarR"
-    android:onClick="callJsonobject"
+    android:onClick="callJsonobject2"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true" />
 
