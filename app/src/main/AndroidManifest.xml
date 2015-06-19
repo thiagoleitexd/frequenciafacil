@@ -4,15 +4,10 @@
 
     <uses-sdk android:minSdkVersion="8" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -31,7 +26,7 @@
         <activity
             android:name=".ModuloAluno"
             android:label="@string/title_activity_modulo_aluno" >
-        </activity>
+        </activity>z
     </application>
 
 </manifest>

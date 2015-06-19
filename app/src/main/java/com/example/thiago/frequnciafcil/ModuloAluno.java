@@ -10,11 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ModuloAluno extends ActionBarActivity {
 
+    public static String apikey;
     private String array_spinner[];
+    private Map<String, String> params;
+    private HashMap<String, String> header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,8 @@ public class ModuloAluno extends ActionBarActivity {
         s.setAdapter(adapter);
 
         Intent intent = getIntent();
-        String apikey = intent.getStringExtra("apiKey");
+
+        apikey = intent.getStringExtra("apiKey");
         String nome = intent.getStringExtra("name");
         apresentacao.setText("Olá, " + nome + "!\nSeja bem vindo ao aplicativo Frequência Fácil.");
 
