@@ -3,6 +3,7 @@ package com.example.thiago.frequnciafcil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,36 +83,56 @@ public class ModuloAluno extends ActionBarActivity {
 
     //inicio
     public void presente(View v){
-        params = new HashMap<String, String>();
-        params.put("senhaAula", senhaAula.getText().toString());
 
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-            //Função executada quando Houver sucesso
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("Teste2", "Sucesso: " + response);
+        if (validateFields()) {
 
+            params = new HashMap<String, String>();
+            params.put("senhaAula", senhaAula.getText().toString());
 
-                Toast.makeText(ModuloAluno.this,
-                        "Presença Registrada com Sucesso!",
-                        Toast.LENGTH_SHORT)
-                        .show();
+            CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+                //Função executada quando Houver sucesso
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.i("Teste2", "Sucesso: " + response);
 
 
+                    Toast.makeText(ModuloAluno.this,
+                            "Presença Registrada com Sucesso!",
+                            Toast.LENGTH_SHORT)
+                            .show();
 
-            }
-        }, new Response.ErrorListener() {
-            //Função executada quando Houver Erro
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ModuloAluno.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        cjor.setTag("tag");
-        rq.add(cjor);
+                }
+            }, new Response.ErrorListener() {
+                //Função executada quando Houver Erro
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ModuloAluno.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            cjor.setTag("tag");
+            rq.add(cjor);
+
+        }
     }
     //fim
 
+
+    private boolean validateFields() {
+        String senhaAulaV = senhaAula.getText().toString().trim();
+        return (!isEmptyFields(senhaAulaV));
+    }
+
+
+
+    private boolean isEmptyFields(String passAula) {
+      if (TextUtils.isEmpty(passAula)) {
+            senhaAula.requestFocus(); //seta o foco para o campo password
+          senhaAula.setError("Insira a Senha da Aula");
+            return true;
+        }
+        return false;
+    }
 
 }

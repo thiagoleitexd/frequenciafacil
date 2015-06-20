@@ -1570,7 +1570,7 @@ containing a value of this type.
         public static final int homeAsUp=0x7f0c0011;
         public static final int icon=0x7f0c002f;
         public static final int idCadastrarR=0x7f0c005d;
-        public static final int idEntrar=0x7f0c0055;
+        public static final int idEntrar=0x7f0c0056;
         public static final int idLogin=0x7f0c0005;
         public static final int idLoginR=0x7f0c0006;
         public static final int idMatriculaR=0x7f0c0062;
@@ -1581,7 +1581,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f0c001c;
         public static final int image=0x7f0c002c;
         public static final int info=0x7f0c0071;
-        public static final int inicioR=0x7f0c0056;
+        public static final int inicioR=0x7f0c0057;
         public static final int line1=0x7f0c006b;
         public static final int line3=0x7f0c006f;
         public static final int listMode=0x7f0c000d;
@@ -1639,7 +1639,7 @@ containing a value of this type.
         public static final int topPanel=0x7f0c0032;
         public static final int up=0x7f0c000c;
         public static final int useLogo=0x7f0c0016;
-        public static final int view=0x7f0c0057;
+        public static final int view=0x7f0c0055;
         public static final int withText=0x7f0c001e;
         public static final int wrap_content=0x7f0c0021;
     }

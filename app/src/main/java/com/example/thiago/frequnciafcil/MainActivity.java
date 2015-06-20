@@ -3,6 +3,7 @@ package com.example.thiago.frequnciafcil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,52 +44,57 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void callJsonobject(View v){
-        params = new HashMap<String, String>();
-        params.put("email", login.getText().toString());
-        params.put("password", password.getText().toString());
 
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-            //Função executada quando Houver sucesso
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("Teste2", "Sucesso: " + response);
+        if (validateFields()){
 
-                try {
 
-                    Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
-                    intent.putExtra("apiKey", response.getString("apiKey"));
-                    intent.putExtra("name", response.getString("name"));
+            params = new HashMap<String, String>();
+            params.put("email", login.getText().toString());
+            params.put("password", password.getText().toString());
 
-                    Toast.makeText(MainActivity.this,
-                            "Login Efetuado com Sucesso.",
-                            Toast.LENGTH_SHORT)
-                            .show();
+            CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+                //Função executada quando Houver sucesso
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.i("Teste2", "Sucesso: " + response);
 
-                    startActivity(intent);
-                } catch (JSONException e) {
+                    try {
 
-                    Toast.makeText(MainActivity.this,
-                            "Login ou Senha incorretos.",
-                            Toast.LENGTH_SHORT)
-                            .show();
+                        Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
+                        intent.putExtra("apiKey", response.getString("apiKey"));
+                        intent.putExtra("name", response.getString("name"));
 
-                    e.printStackTrace();
+                        Toast.makeText(MainActivity.this,
+                                "Login Efetuado com Sucesso.",
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                        startActivity(intent);
+                    } catch (JSONException e) {
+
+                        Toast.makeText(MainActivity.this,
+                                "Login ou Senha incorretos.",
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                        e.printStackTrace();
+
+                    }
+
+
 
                 }
+            }, new Response.ErrorListener() {
+                //Função executada quando Houver Erro
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-
-
-            }
-        }, new Response.ErrorListener() {
-            //Função executada quando Houver Erro
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        cjor.setTag("tag");
-        rq.add(cjor);
+            cjor.setTag("tag");
+            rq.add(cjor);
+        }
     }
 
     public void listartarefas(View v){
@@ -145,4 +151,29 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+    private boolean validateFields() {
+        String loginV = login.getText().toString().trim();
+        String senhaV = password.getText().toString().trim();
+        return (!isEmptyFields(loginV, senhaV));
+    }
+
+
+
+    private boolean isEmptyFields(String user, String pass) {
+        if (TextUtils.isEmpty(user)) {
+            login.requestFocus(); //seta o foco para o campo user
+            login.setError("Digite seu email neste campo");
+            return true;
+        } else if (TextUtils.isEmpty(pass)) {
+            password.requestFocus(); //seta o foco para o campo password
+            password.setError("Digite sua senha cadastrada");
+            return true;
+        }
+        return false;
+    }
+
+
 }
