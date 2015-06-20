@@ -31,14 +31,13 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idNomeR"
-        android:layout_marginTop="36dp"
         android:hint="Insira seu nome"
         android:inputType="textPersonName"
-        android:layout_below="@+id/inicioR"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -47,11 +46,11 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:ems="10"
         android:id="@+id/idLoginR"
         android:hint="Insira seu email"
-        android:layout_below="@+id/idNomeR"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -64,11 +63,11 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:textIsSelectable="false"
         android:singleLine="false"
         android:password="true"
-        android:layout_below="@+id/idMatriculaR"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,11 +75,11 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:id="@+id/idMatriculaR"
         android:hint="Insira sua matrícula"
         android:inputType="textPersonName"
-        android:layout_below="@+id/idLoginR"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,11 +92,70 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:textIsSelectable="false"
         android:singleLine="false"
         android:password="true"
-        android:layout_below="@+id/idSenhaR"
+        android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Nome:"
+        android:id="@+id/textView"
+        android:layout_below="@+id/inicioR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:singleLine="false"
+        android:phoneNumber="false"
+        android:password="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Email:"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/idNomeR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Matrícula:"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/idLoginR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Senha:"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/idMatriculaR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Confirmar Senha:"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/idSenhaR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
 
 
 </RelativeLayout><!-- From: file:/home/thiago/StudioProjects/FrequenciaFacil2.0/app/src/main/res/layout/activity_register.xml -->

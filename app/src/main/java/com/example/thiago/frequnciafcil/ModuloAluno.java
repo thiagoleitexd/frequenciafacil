@@ -42,7 +42,7 @@ public class ModuloAluno extends ActionBarActivity {
 
         TextView apresentacao = (TextView) findViewById(R.id.apresentacao);
         senhaAula = (EditText) findViewById(R.id.senhaaula);
-        url = "http://trabalhoderedes.esy.es/checkin/v1/registrarfrequencia";
+        url = "http://redesdecomputadores.esy.es/checkin/v1/registrarfrequencia";
         array_spinner=new String[1];
         array_spinner[0]="Redes de computadores";
         Spinner s = (Spinner) findViewById(R.id.disciplinas);

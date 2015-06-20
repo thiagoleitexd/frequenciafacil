@@ -36,7 +36,7 @@ public class Register extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        url = "http://trabalhoderedes.esy.es/checkin/v1/register";
+        url = "http://redesdecomputadores.esy.es/checkin/v1/register";
         nome = (EditText) findViewById(R.id.idNomeR);
         login = (EditText) findViewById(R.id.idLoginR);
         password = (EditText) findViewById(R.id.idSenhaR);

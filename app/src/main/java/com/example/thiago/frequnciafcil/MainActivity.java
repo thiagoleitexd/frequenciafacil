@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        url = "http://trabalhoderedes.esy.es/checkin/v1/login";
+        url = "http://redesdecomputadores.esy.es/checkin/v1/login";
         login = (EditText) findViewById(R.id.idLogin);
         password = (EditText) findViewById(R.id.idSenha);
         rq = Volley.newRequestQueue(MainActivity.this);
