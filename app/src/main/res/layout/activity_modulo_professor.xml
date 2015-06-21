@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.thiago.frequnciafcil.ModuloProfessor">
+
+    <TextView android:text="Frequência Fácil - Professor" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulo"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/senhaAulaProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:autoText="false"
+        android:editable="false"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textIsSelectable="false"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/status"
+        android:layout_alignStart="@+id/status"
+        android:layout_alignRight="@+id/status"
+        android:layout_alignEnd="@+id/status"
+        android:singleLine="false" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gerarSenha"
+        android:text="Gerar Senha"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/titulo"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/status"
+        android:visibility="visible"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:textColor = "#FF0000"
+        android:text="Desligado"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignRight="@+id/bstatus"
+        android:layout_alignEnd="@+id/bstatus"
+        android:layout_toEndOf="@+id/textView8"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:gravity="center"
+        android:textIsSelectable="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desligar Frequência"
+        android:id="@+id/bstatus"
+        android:layout_marginTop="52dp"
+        android:visibility="invisible"
+        android:layout_below="@+id/status"
+        android:layout_centerHorizontal="true"
+        android:onClick="desligarFrequencia" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Status:"
+        android:id="@+id/textView8"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/textView9"
+        android:layout_toLeftOf="@+id/bstatus"
+        android:layout_toStartOf="@+id/bstatus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Senha:"
+        android:id="@+id/textView9"
+        android:layout_alignTop="@+id/senhaAulaProf"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_alignBottom="@+id/senhaAulaProf"
+        android:gravity="center_vertical" />
+
+</RelativeLayout>

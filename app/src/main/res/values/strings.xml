@@ -8,4 +8,5 @@
     <string name="entrar" />
     <string name="title_activity_modulo_aluno">ModuloAluno</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_modulo_professor">ModuloProfessor</string>
 </resources>

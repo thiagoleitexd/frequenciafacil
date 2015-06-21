@@ -53,9 +53,9 @@ public class Register extends ActionBarActivity {
 
     public void callJsonobject2(View v){
 
-        boolean validade2 = validateFields();
-        boolean validade =  emailValidator(login.getText().toString());
         boolean validade3 = validarSenhas();
+        boolean validade = emailValidator(login.getText().toString());
+        boolean validade2 = validateFields();
 
         System.out.println(validade);
         System.out.println(validade2);
@@ -198,9 +198,15 @@ public class Register extends ActionBarActivity {
 
     private boolean isEmptyFields(String nomeV, String matV, String loginV, String pass1V, String pass2V) {
         int cont = 0;
-        if (TextUtils.isEmpty(nomeV)) {
-            nome.requestFocus(); //seta o foco para o campo user
-            nome.setError("Digite seu Nome Completo neste campo");
+        if (TextUtils.isEmpty(pass2V)) {
+            password2.requestFocus(); //seta o foco para o campo password
+            password2.setError("Digite sua senha igual ao campo anterior");
+            cont++;
+            //return true;
+        }
+        if (TextUtils.isEmpty(pass1V)) {
+            password.requestFocus(); //seta o foco para o campo password
+            password.setError("Digite sua senha");
             cont ++;
             //return true;
         }
@@ -210,19 +216,13 @@ public class Register extends ActionBarActivity {
             cont ++;
             //return true;
         }
-        if (TextUtils.isEmpty(pass1V)) {
-            password.requestFocus(); //seta o foco para o campo password
-            password.setError("Digite sua senha");
+        if (TextUtils.isEmpty(nomeV)) {
+            nome.requestFocus(); //seta o foco para o campo user
+            nome.setError("Digite seu Nome Completo neste campo");
             cont ++;
             //return true;
         }
-        if (TextUtils.isEmpty(pass2V)) {
-            password2.requestFocus(); //seta o foco para o campo password
-            password2.setError("Digite sua senha igual ao campo anterior");
-            cont++;
-            //return true;
-        }
-        if(cont == 0){
+       if(cont == 0){
             return false;
         }
         else {

@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -38,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
         url = "http://redesdecomputadores.esy.es/checkin/v1/login";
         login = (EditText) findViewById(R.id.idLogin);
         password = (EditText) findViewById(R.id.idSenha);
+
         rq = Volley.newRequestQueue(MainActivity.this);
     }
 
@@ -45,7 +47,8 @@ public class MainActivity extends ActionBarActivity {
 
     public void callJsonobject(View v){
 
-        if (validateFields()){
+
+       if (validateFields()){
 
 
             params = new HashMap<String, String>();
