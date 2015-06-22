@@ -27,6 +27,8 @@ public class Response<T> {
     public interface Listener<T> {
         /** Called when a response is received. */
         public void onResponse(T response);
+
+
     }
 
     /** Callback interface for delivering error responses. */
@@ -82,4 +84,6 @@ public class Response<T> {
         this.cacheEntry = null;
         this.error = error;
     }
+
+
 }
