@@ -40,7 +40,7 @@ public class Register extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        url = "http://redesdecomputadores.esy.es/checkin/v1/register";
+        url = MainActivity.urlGeral+"register";
         nome = (EditText) findViewById(R.id.idNomeR);
         login = (EditText) findViewById(R.id.idLoginR);
         password = (EditText) findViewById(R.id.idSenhaR);
@@ -72,12 +72,15 @@ public class Register extends ActionBarActivity {
             //if (password.getText().toString().equals(password2.getText().toString())) {
 
                 CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+
                     //Função executada quando Houver sucesso
                     @Override
                     public void onResponse(JSONObject response) {
+
                         Log.i("Teste2", "Sucesso: " + response);
 
                         Intent intent = new Intent(Register.this, MainActivity.class);
+
                         Toast.makeText(Register.this,
                                 "Cadastro Realizado com Sucesso\nSeu login é: " + login.getText().toString(),
                                 Toast.LENGTH_LONG)

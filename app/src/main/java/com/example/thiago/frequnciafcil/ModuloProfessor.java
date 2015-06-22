@@ -41,7 +41,7 @@ public class ModuloProfessor extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modulo_professor);
-        url = "http://redesdecomputadores.esy.es/checkin/v1/criarFrequencia";
+        url = MainActivity.urlGeral+"criarFrequencia";
         rq = Volley.newRequestQueue(ModuloProfessor.this);
     }
 

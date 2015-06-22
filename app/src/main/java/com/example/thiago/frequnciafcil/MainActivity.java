@@ -26,6 +26,7 @@ import java.util.UUID;
 
 
 public class MainActivity extends ActionBarActivity {
+    public static String urlGeral = "http://trabalhoderedes.esy.es/checkin/v1/";
     private RequestQueue rq;
     private Map<String, String> params;
     private EditText login;
@@ -36,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        url = "http://redesdecomputadores.esy.es/checkin/v1/login";
+        url = urlGeral+"login";
         login = (EditText) findViewById(R.id.idLogin);
         password = (EditText) findViewById(R.id.idSenha);
 
@@ -101,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void listartarefas(View v){
-        url = "http://trabalhoderedes.esy.es/checkin/v1/tasks/1";
+        url = urlGeral+"tasks/1";
         CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
