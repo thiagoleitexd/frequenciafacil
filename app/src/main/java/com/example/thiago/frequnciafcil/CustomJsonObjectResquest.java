@@ -52,7 +52,8 @@ public class CustomJsonObjectResquest extends Request<JSONObject> {
     public Map<String, String> getHeaders() throws AuthFailureError{
         HashMap<String, String> header = new HashMap<String, String>();
         Log.i("APIKEY", "APIKEY");
-        header.put("Authorization","d8b9bc6b1ab9b83c3ea8210d0f2cd7e3");
+     //   header.put("Authorization", "d8b9bc6b1ab9b83c3ea8210d0f2cd7e3");
+        header.put("Authorization", ModuloAluno.apikey);
         return (header);
     }
 

@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class ModuloAluno extends ActionBarActivity {
 
         TextView apresentacao = (TextView) findViewById(R.id.apresentacao);
         senhaAula = (EditText) findViewById(R.id.senhaaula);
-        url = "http://redesdecomputadores.esy.es/checkin/v1/registrarfrequencia";
+        url = "http://redesdecomputadores.esy.es/checkin/v1/registrarPresenca";
         array_spinner=new String[1];
         array_spinner[0]="Redes de computadores";
         Spinner s = (Spinner) findViewById(R.id.disciplinas);
@@ -87,7 +88,7 @@ public class ModuloAluno extends ActionBarActivity {
         if (validateFields()) {
 
             params = new HashMap<String, String>();
-            params.put("senhaAula", senhaAula.getText().toString());
+            params.put("password", senhaAula.getText().toString());
 
             CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
                 //Função executada quando Houver sucesso
@@ -95,12 +96,25 @@ public class ModuloAluno extends ActionBarActivity {
                 public void onResponse(JSONObject response) {
                     Log.i("Teste2", "Sucesso: " + response);
 
+                    try {
+                        if (response.getString("error").equals("false")){
 
-                    Toast.makeText(ModuloAluno.this,
-                            "Presença Registrada com Sucesso!",
-                            Toast.LENGTH_SHORT)
-                            .show();
+                            Toast.makeText(ModuloAluno.this,
+                                    "Presença Registrada com Sucesso!",
+                                    Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                        else{
 
+                            Toast.makeText(ModuloAluno.this,
+                                    response.getString("message"),
+                                    Toast.LENGTH_SHORT)
+                                    .show();
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             }, new Response.ErrorListener() {
