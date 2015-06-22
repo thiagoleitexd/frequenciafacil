@@ -26,7 +26,7 @@ import java.util.UUID;
 
 
 public class MainActivity extends ActionBarActivity {
-    public static String urlGeral = "http://trabalhoderedes.esy.es/checkin/v1/";
+    public static String urlGeral = "http://redesdecomputadores.esy.es/checkin/v1/";
     private RequestQueue rq;
     private Map<String, String> params;
     private EditText login;
