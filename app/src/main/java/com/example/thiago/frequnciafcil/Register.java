@@ -203,25 +203,25 @@ public class Register extends ActionBarActivity {
         int cont = 0;
         if (TextUtils.isEmpty(pass2V)) {
             password2.requestFocus(); //seta o foco para o campo password
-            password2.setError("Digite sua senha igual ao campo anterior");
+            password2.setError("Os campos Senha e Confirmar devem ser iguais");
             cont++;
             //return true;
         }
-        if (TextUtils.isEmpty(pass1V)) {
+        if (TextUtils.isEmpty(pass1V)|| (pass1V.length() < 6)) {
             password.requestFocus(); //seta o foco para o campo password
-            password.setError("Digite sua senha");
+            password.setError("Sua Senha deve conter pelo menos 6 caracteres");
             cont ++;
             //return true;
         }
-        if (TextUtils.isEmpty(matV)) {
+        if ((TextUtils.isEmpty(matV)) || (matV.length() != 8)) {
             mat.requestFocus(); //seta o foco para o campo password
-            mat.setError("Digite sua Matrícula");
+            mat.setError("Sua Matrícula deve conter 8 números");
             cont ++;
             //return true;
         }
         if (TextUtils.isEmpty(nomeV)) {
             nome.requestFocus(); //seta o foco para o campo user
-            nome.setError("Digite seu Nome Completo neste campo");
+            nome.setError("Digite seu Nome Completo");
             cont ++;
             //return true;
         }
@@ -247,8 +247,6 @@ public class Register extends ActionBarActivity {
 
     private boolean iguais(String pass1, String pass2) {
         if (!pass1.equals(pass2)) {
-            password.requestFocus(); //seta o foco para o campo password
-            password.setError("Os valores dos campos Senha e Confirmar Senha devem ser iguais");
             password2.requestFocus(); //seta o foco para o campo password
             password2.setError("Os valores dos campos Senha e Confirmar Senha devem ser iguais");
             return false;
