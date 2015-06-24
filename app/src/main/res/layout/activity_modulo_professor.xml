@@ -27,11 +27,11 @@
         android:textIsSelectable="false"
         android:layout_marginTop="42dp"
         android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/status"
-        android:layout_alignStart="@+id/status"
-        android:layout_alignRight="@+id/status"
-        android:layout_alignEnd="@+id/status"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 
     <Button
         android:id="@+id/button"
@@ -39,39 +39,35 @@
         android:layout_height="wrap_content"
         android:onClick="gerarSenha"
         android:text="Gerar Senha"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/titulo"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/status"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:hint="oi" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/status"
         android:visibility="visible"
         android:textStyle="bold"
-        android:singleLine="true"
         android:textColor = "#FF0000"
+        android:textSize="20dp"
         android:text="Desligado"
-        android:layout_alignBottom="@+id/textView8"
-        android:layout_alignRight="@+id/bstatus"
-        android:layout_alignEnd="@+id/bstatus"
-        android:layout_toEndOf="@+id/textView8"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
         android:gravity="center"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:layout_alignTop="@+id/textView8"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Desligar Frequência"
         android:id="@+id/bstatus"
-        android:layout_marginTop="52dp"
         android:visibility="invisible"
-        android:layout_below="@+id/status"
+        android:onClick="desligarFrequencia"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="desligarFrequencia" />
+        android:layout_marginBottom="51dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,11 +75,13 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Status:"
         android:id="@+id/textView8"
-        android:layout_marginTop="50dp"
         android:gravity="center_vertical"
-        android:layout_below="@+id/textView9"
-        android:layout_toLeftOf="@+id/bstatus"
-        android:layout_toStartOf="@+id/bstatus" />
+        android:layout_below="@+id/titulo"
+        android:layout_alignLeft="@+id/titulo"
+        android:layout_alignStart="@+id/titulo"
+        android:layout_marginTop="58dp"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,10 +89,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Senha:"
         android:id="@+id/textView9"
+        android:gravity="center_vertical"
+        android:layout_alignBottom="@+id/senhaAulaProf"
+        android:layout_toLeftOf="@+id/bstatus"
         android:layout_alignTop="@+id/senhaAulaProf"
         android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8"
-        android:layout_alignBottom="@+id/senhaAulaProf"
-        android:gravity="center_vertical" />
+        android:layout_alignStart="@+id/textView8" />
 
 </RelativeLayout>

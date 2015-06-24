@@ -70,8 +70,6 @@ public class Register extends ActionBarActivity {
             params.put("password", password.getText().toString());
             params.put("matricula", mat.getText().toString());
 
-            //if (password.getText().toString().equals(password2.getText().toString())) {
-
                 CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
                     //Função executada quando Houver sucesso
@@ -88,7 +86,6 @@ public class Register extends ActionBarActivity {
                                 .show();
                         startActivity(intent);
 
-
                     }
                 }, new Response.ErrorListener() {
                     //Função executada quando Houver Erro
@@ -100,15 +97,6 @@ public class Register extends ActionBarActivity {
 
                 cjor.setTag("tag");
                 rq.add(cjor);
-
-
-          //  } else {
-            //    Toast.makeText(Register.this,
-              //          "AS senhas digitadas são diferentes.\nÉ necessário que elas sejam iguais.",
-                //        Toast.LENGTH_LONG)
-                  //      .show();
-
-            //}
 
         }
     }

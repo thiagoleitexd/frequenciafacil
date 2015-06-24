@@ -1,6 +1,8 @@
 package com.example.thiago.frequnciafcil;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -37,42 +39,25 @@ public class ModuloProfessor extends ActionBarActivity {
     private Button bstatus;
     private Animation anim;
     private String url;
+    private String senhadaAula;
+    private String status_inicial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modulo_professor);
-        url = MainActivity.urlGeral+"criarFrequencia";
-        rq = Volley.newRequestQueue(ModuloProfessor.this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_modulo_professor, menu);
-        return true;
-    }
-
-    public void gerarSenha(View v){
 
         params = new HashMap<String, String>();
 
-
-        UUID uuid = UUID.randomUUID();
-        String myRandom = uuid.toString();
-        senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
-        senhaGerada.setText(myRandom.substring(0, 5));
-
-        params.put("password", senhaGerada.getText().toString());
 //inicio
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+        url = MainActivity.urlGeral+"fecharFrequencia";
+        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
-
 
             @Override
             public void onResponse(JSONObject response) {
 
-                String msg = "oi";
+                String msg = null;
 
                 Log.i("Teste3", "Sucesso: " + response);
 
@@ -81,6 +66,135 @@ public class ModuloProfessor extends ActionBarActivity {
                     msg = response.getString("message");
 
                     if (erro.equals("false")){
+
+                        Toast.makeText(ModuloProfessor.this,
+                                "Status: Frequência Desligada",
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                    else {
+
+                        Toast.makeText(ModuloProfessor.this,
+                                msg,
+                                Toast.LENGTH_SHORT)
+                                .show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            //Função executada quando Houver Erro
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        rq = Volley.newRequestQueue(ModuloProfessor.this);
+        cjor.setTag("tag");
+        rq.add(cjor);
+//fim
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_modulo_professor, menu);
+        return true;
+    }
+//
+public void statusFrequencia(){
+    url = MainActivity.urlGeral+"statusFrequencia";
+    params = new HashMap<String, String>();
+
+    CustomJsonObjectResquestProf cjorr = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+
+        public void onResponse(JSONObject response) {
+
+            String msg = null;
+
+
+            Log.i("Teste3", "Sucesso: " + response);
+
+            try {
+                String erro = response.getString("error");
+                System.out.println(response);
+                msg = response.getString("message");
+
+                if (erro.equals("false")){
+
+
+                    Toast.makeText(ModuloProfessor.this,
+                           msg,
+                            Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+                else {
+
+                    Toast.makeText(ModuloProfessor.this,
+                            msg,
+                            Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+
+            }
+
+        }
+    }, new Response.ErrorListener() {
+        //Função executada quando Houver Erro
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    });
+    cjorr.setTag("tag");
+    rq.add(cjorr);
+//fim
+}
+
+
+
+//
+
+    public void gerarSenha(View v){
+
+        url = MainActivity.urlGeral+"criarFrequencia";
+        params = new HashMap<String, String>();
+
+        senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
+        UUID uuid = UUID.randomUUID();
+        String myRandom = uuid.toString();
+        senhadaAula = myRandom.substring(0, 5);
+
+
+
+        params.put("password", senhadaAula);
+//inicio
+        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+            //Função executada quando Houver sucesso
+
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                String msg = null;
+
+                Log.i("Teste3", "Sucesso: " + response);
+
+                try {
+                    String erro = response.getString("error");
+                    msg = response.getString("message");
+
+                    if (erro.equals("false")){
+                        senhaGerada.setText(senhadaAula);
                         estilo();
 
                         Toast.makeText(ModuloProfessor.this,
@@ -117,8 +231,7 @@ public class ModuloProfessor extends ActionBarActivity {
 //fim
     }
 
-
-    public void estilo(){
+     public void estilo(){
 
 
         bstatus = (Button) findViewById(R.id.bstatus);
@@ -143,15 +256,64 @@ public class ModuloProfessor extends ActionBarActivity {
 
     public void desligarFrequencia(View V){
 
-        System.out.println("oi");
-        status.setText("Desligado");
-        anim.setRepeatCount(0);
-        status.setTextColor(Color.RED);
-        bstatus.setVisibility(View.INVISIBLE);
-        senhaGerada.setText("");
+
+//inicio
+        url = MainActivity.urlGeral+"fecharFrequencia";
+        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
+            //Função executada quando Houver sucesso
 
 
+            @Override
+            public void onResponse(JSONObject response) {
 
+                String msg = null;
+
+                Log.i("Teste3", "Sucesso: " + response);
+
+                try {
+                    String erro = response.getString("error");
+                    msg = response.getString("message");
+
+                    if (erro.equals("false")){
+
+                        status.setText("Desligado");
+                        anim.setRepeatCount(0);
+                        status.setTextColor(Color.RED);
+                        bstatus.setVisibility(View.INVISIBLE);
+                        senhaGerada.setText("");
+
+                        Toast.makeText(ModuloProfessor.this,
+                                "Frequência Desligada",
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                    }
+                    else {
+
+                        Toast.makeText(ModuloProfessor.this,
+                                msg,
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                    }
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            //Função executada quando Houver Erro
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        cjor.setTag("tag");
+        rq.add(cjor);
+//fim
 
     }
 

@@ -1,29 +1,29 @@
 package com.example.thiago.frequnciafcil;
 
-        import android.util.Log;
-        import com.android.volley.AuthFailureError;
-        import com.android.volley.NetworkResponse;
-        import com.android.volley.Request;
-        import com.android.volley.Response;
-        import com.android.volley.toolbox.HttpHeaderParser;
+import android.util.Log;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.HttpHeaderParser;
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.io.UnsupportedEncodingException;
-        import java.util.HashMap;
-        import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 //Classe criada para possibilitar o envio do JSON por meio do POST
 //sobrescrevendo alguns métodos
 
-public class CustomJsonObjectResquest extends Request<JSONObject> {
+public class CustomJsonObjectResquestProf extends Request<JSONObject> {
     private Response.Listener<JSONObject> response;
     private Map<String, String> params;
 
     //POST
-    public CustomJsonObjectResquest(int method, String url,Map<String, String> params, Response.Listener<JSONObject> response,
+    public CustomJsonObjectResquestProf(int method, String url,Map<String, String> params, Response.Listener<JSONObject> response,
                                     Response.ErrorListener listener) {
         super(method, url, listener);
         this.params = params;
@@ -31,7 +31,7 @@ public class CustomJsonObjectResquest extends Request<JSONObject> {
     }
 
     //GET
-    public CustomJsonObjectResquest(String url,Map<String, String> params, Response.Listener<JSONObject> response,
+    public CustomJsonObjectResquestProf(String url,Map<String, String> params, Response.Listener<JSONObject> response,
                                     Response.ErrorListener listener) {
         super(Method.GET, url, listener);
         this.params = params;
@@ -49,8 +49,8 @@ public class CustomJsonObjectResquest extends Request<JSONObject> {
     public Map<String, String> getHeaders() throws AuthFailureError{
         HashMap<String, String> header = new HashMap<String, String>();
         Log.i("APIKEY", "APIKEY");
-    //    header.put("Authorization", "5caf1000e7a1b3f2615da7e5283a9062");
-       header.put("Authorization", ModuloAluno.apikey);
+        header.put("Authorization", "5caf1000e7a1b3f2615da7e5283a9062");
+        //   header.put("Authorization", ModuloAluno.apikey);
         return (header);
     }
 
