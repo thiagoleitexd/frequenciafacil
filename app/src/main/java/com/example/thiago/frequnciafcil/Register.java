@@ -40,11 +40,13 @@ public class Register extends ActionBarActivity {
     private String url;
     private String msg;
     private String erro;
+    private String codigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        codigo = "0";
         url = MainActivity.urlGeral+"register";
         nome = (EditText) findViewById(R.id.idNomeR);
         login = (EditText) findViewById(R.id.idLoginR);
@@ -80,12 +82,15 @@ public class Register extends ActionBarActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            erro = response.getString("error");
+                            //erro = response.getString("error");
                             msg = response.getString("message");
+                            codigo = response.getString("codigo");
                         } catch (JSONException e) {
+                            System.out.println("testeeeeee");
                             e.printStackTrace();
                         }
-                        if (erro.equals("false")) {
+
+                        if (codigo.equals("1")) {
                             Log.i("Teste2", "Sucesso: " + response);
 
                             Intent intent = new Intent(Register.this, MainActivity.class);
@@ -96,12 +101,34 @@ public class Register extends ActionBarActivity {
                                     .show();
                             startActivity(intent);
                         }
+                        else if (codigo.equals("2")) {
+                            Toast.makeText(Register.this,
+                                    "Esse E-mail já cadastrado no sistema. Tente outro.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+                        }
+                        else if (codigo.equals("3")) {
+                            Toast.makeText(Register.this,
+                                    "Essa Matrícula ja cadastrada no sistema. Tente outro.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+                        }
+                        else if (codigo.equals("4")) {
+                            Toast.makeText(Register.this,
+                                    "Esse E-mail e Matrícula já estão cadastradas no sistema.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+                        }
                         else{
                             Toast.makeText(Register.this,
-                                    "Já existe um usuário cadastrado com esse mesmo e-mail ou matrícula",
+                                    "Erro de comunicação com o servidor/Banco de Dados. Tente Mais Tarde.",
                                     Toast.LENGTH_LONG)
                                     .show();
                         }
+
                     }
                 }, new Response.ErrorListener() {
                     //Função executada quando Houver Erro
