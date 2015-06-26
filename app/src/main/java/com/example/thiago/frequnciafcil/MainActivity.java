@@ -1,9 +1,11 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,38 +37,43 @@ public class MainActivity extends ActionBarActivity {
     private EditText login;
     private EditText password;
     private String url;
-
+    ProgressDialog p_dialog;
+    private int flag;
+    CustomJsonObjectResquest cjor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        url = urlGeral+"login";
-        login = (EditText) findViewById(R.id.idLogin);
-        password = (EditText) findViewById(R.id.idSenha);
 
+        String login_adquirido = null;
+        Intent intent = getIntent();
+        login_adquirido = intent.getStringExtra("login");
+        if (login_adquirido != null) {
+            login = (EditText) findViewById(R.id.idLogin);
+            login.setText(login_adquirido);
+        }
         rq = Volley.newRequestQueue(MainActivity.this);
     }
 
-
-
-    public void callJsonobject(View v){
-
-
-       if (validateFields()){
-
-
+    public void comunicacacao() {
+            p_dialog = ProgressDialog.show(this, "Verificando Login e Senha", "Aguarde...", false, true);
+            System.out.println("errando1");
+            url = urlGeral + "login";
             params = new HashMap<String, String>();
             params.put("email", login.getText().toString());
             params.put("password", password.getText().toString());
-
-            CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+            System.out.println("errando2");
+            cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
                 //Função executada quando Houver sucesso
+
                 @Override
                 public void onResponse(JSONObject response) {
+                    System.out.println("errando3");
                     Log.i("Teste2", "Sucesso: " + response);
-
+                    flag = 1;
+                    p_dialog.dismiss();
                     try {
-
+                        System.out.println("errando4");
                         Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
                         intent.putExtra("name", response.getString("name"));
@@ -77,30 +85,52 @@ public class MainActivity extends ActionBarActivity {
 
                         startActivity(intent);
                     } catch (JSONException e) {
-
+                        System.out.println("errando5");
                         Toast.makeText(MainActivity.this,
                                 "Login ou Senha incorretos.",
                                 Toast.LENGTH_SHORT)
                                 .show();
-
                         e.printStackTrace();
 
                     }
 
-
-
                 }
             }, new Response.ErrorListener() {
                 //Função executada quando Houver Erro
+
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    System.out.println("errando6");
+
+                    if (error instanceof NoConnectionError) {
+                        Toast.makeText(MainActivity.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                        p_dialog.dismiss();
+                    }  else{
+                        Toast.makeText(MainActivity.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
+                        SystemClock.sleep(7000);
+                        comunicacacao();
+                    }
+
                 }
             });
 
+            System.out.println("errando7");
             cjor.setTag("tag");
             rq.add(cjor);
+
+    }
+
+
+    public void callJsonobject(View V) {
+
+        login = (EditText) findViewById(R.id.idLogin);
+        password = (EditText) findViewById(R.id.idSenha);
+
+        if (validateFields()) {
+
+            comunicacacao();
         }
+
     }
 
     public void listartarefas(View v){
@@ -114,7 +144,7 @@ public class MainActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

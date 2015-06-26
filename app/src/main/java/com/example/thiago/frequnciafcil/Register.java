@@ -13,12 +13,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -36,6 +38,8 @@ public class Register extends ActionBarActivity {
     private EditText nome;
     private EditText mat;
     private String url;
+    private String msg;
+    private String erro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,23 +79,40 @@ public class Register extends ActionBarActivity {
                     //Função executada quando Houver sucesso
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            erro = response.getString("error");
+                            msg = response.getString("message");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if (erro.equals("false")) {
+                            Log.i("Teste2", "Sucesso: " + response);
 
-                        Log.i("Teste2", "Sucesso: " + response);
-
-                        Intent intent = new Intent(Register.this, MainActivity.class);
-
-                        Toast.makeText(Register.this,
-                                "Cadastro Realizado com Sucesso\nSeu login é: " + login.getText().toString(),
-                                Toast.LENGTH_LONG)
-                                .show();
-                        startActivity(intent);
-
+                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            intent.putExtra("login", login.getText().toString());
+                            Toast.makeText(Register.this,
+                                    "Cadastro Efetuado com sucesso",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(Register.this,
+                                    "Já existe um usuário cadastrado com esse mesmo e-mail ou matrícula",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
                     }
                 }, new Response.ErrorListener() {
                     //Função executada quando Houver Erro
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Register.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        if (error instanceof NoConnectionError) {
+                            Toast.makeText(Register.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(Register.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -99,25 +120,6 @@ public class Register extends ActionBarActivity {
                 rq.add(cjor);
 
         }
-    }
-
-    public void listartarefas(View v){
-        url = "http://trabalhoderedes.esy.es/checkin/v1/tasks/1";
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("Teste2", "Sucesso: "+response);
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Register.this, "Erro: "+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        cjor.setTag("tag");
-        rq.add(cjor);
     }
 
     @Override
@@ -182,12 +184,9 @@ public class Register extends ActionBarActivity {
         }
 
 
-
-
-
-
-
-
+    public boolean isAlpha(String name) {
+        return name.matches("[0-9]+");
+    }
 
 
     private boolean validateFields() {
@@ -215,9 +214,9 @@ public class Register extends ActionBarActivity {
             cont ++;
             //return true;
         }
-        if ((TextUtils.isEmpty(matV)) || (matV.length() != 8)) {
+        if ((TextUtils.isEmpty(matV)) || (matV.length() != 8) || (!isAlpha(matV))){
             mat.requestFocus(); //seta o foco para o campo password
-            mat.setError("Sua Matrícula deve conter 8 números");
+            mat.setError("Sua Matrícula deve conter somente números contendo 8 digitos");
             cont ++;
             //return true;
         }

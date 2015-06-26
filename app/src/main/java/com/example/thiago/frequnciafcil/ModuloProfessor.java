@@ -2,9 +2,12 @@ package com.example.thiago.frequnciafcil;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,23 +41,71 @@ public class ModuloProfessor extends ActionBarActivity {
     private EditText senhaGerada;
     private TextView status;
     private Button bstatus;
+    private Button bSenha;
     private Animation anim;
     private String url;
     private String senhadaAula;
     private String status_inicial;
+    //ProgressDialog p_dialog;
+
+public void alerta(){
+
+
+
+    AlertDialog.Builder alertDialogBuilder = new        AlertDialog.Builder(this);
+
+    alertDialogBuilder.setTitle("Problema na Conexão");
+    alertDialogBuilder.setMessage("Ocorreu erro na conexão com o servidor ou seu dispositivo encontra-se sem conexão com a internet.\nTente em alguns minutos");
+
+    alertDialogBuilder.setPositiveButton("Tentar Novamente",
+            new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                    }
+                });
+            alertDialogBuilder.setNegativeButton("Sair",
+            new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    finish();
+                }
+            });
+
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+
+
+
+
+}
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modulo_professor);
 
+        bstatus = (Button) findViewById(R.id.bstatus);
+        bSenha = (Button) findViewById(R.id.bsenha);
+        status = (TextView) findViewById(R.id.status);
+        senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
         params = new HashMap<String, String>();
 
 //inicio
         url = MainActivity.urlGeral+"fecharFrequencia";
+
+
+
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
-
             @Override
             public void onResponse(JSONObject response) {
 
@@ -89,7 +141,14 @@ public class ModuloProfessor extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                alerta();
+                if (error instanceof NoConnectionError) {
+                    Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         rq = Volley.newRequestQueue(ModuloProfessor.this);
@@ -152,14 +211,24 @@ public void statusFrequencia(){
         //Função executada quando Houver Erro
         @Override
         public void onErrorResponse(VolleyError error) {
-            Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            if (error instanceof NoConnectionError) {
+                Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+            }
         }
     });
     cjorr.setTag("tag");
     rq.add(cjorr);
 //fim
 }
-
+    public String getSenhadaAula(){
+        UUID uuid = UUID.randomUUID();
+        String myRandom = uuid.toString();
+        senhadaAula = myRandom.substring(0, 5);
+        return senhadaAula;
+    }
 
 
 //
@@ -169,15 +238,10 @@ public void statusFrequencia(){
         url = MainActivity.urlGeral+"criarFrequencia";
         params = new HashMap<String, String>();
 
-        senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
-        UUID uuid = UUID.randomUUID();
-        String myRandom = uuid.toString();
-        senhadaAula = myRandom.substring(0, 5);
 
-
-
-        params.put("password", senhadaAula);
+        params.put("password", getSenhadaAula());
 //inicio
+
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
 
@@ -223,7 +287,13 @@ public void statusFrequencia(){
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                if (error instanceof NoConnectionError) {
+                    Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cjor.setTag("tag");
@@ -234,9 +304,9 @@ public void statusFrequencia(){
      public void estilo(){
 
 
-        bstatus = (Button) findViewById(R.id.bstatus);
+
         bstatus.setVisibility(View.VISIBLE);
-        status = (TextView) findViewById(R.id.status);
+        bSenha.setVisibility(View.INVISIBLE);
         status.setTextColor(Color.GREEN);
         //status.setBackgroundColor(Color.DKGRAY);
         status.setText("Ligado");
@@ -255,7 +325,6 @@ public void statusFrequencia(){
     }
 
     public void desligarFrequencia(View V){
-
 
 //inicio
         url = MainActivity.urlGeral+"fecharFrequencia";
@@ -280,6 +349,7 @@ public void statusFrequencia(){
                         anim.setRepeatCount(0);
                         status.setTextColor(Color.RED);
                         bstatus.setVisibility(View.INVISIBLE);
+                        bSenha.setVisibility(View.VISIBLE);
                         senhaGerada.setText("");
 
                         Toast.makeText(ModuloProfessor.this,
@@ -308,7 +378,12 @@ public void statusFrequencia(){
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ModuloProfessor.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                if (error instanceof NoConnectionError) {
+                    Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cjor.setTag("tag");

@@ -1548,8 +1548,8 @@ containing a value of this type.
         public static final int always=0x7f0c001a;
         public static final int apresentacao=0x7f0c0059;
         public static final int beginning=0x7f0c0017;
-        public static final int bstatus=0x7f0c0062;
-        public static final int button=0x7f0c005f;
+        public static final int bsenha=0x7f0c0060;
+        public static final int bstatus=0x7f0c0061;
         public static final int buttonPanel=0x7f0c003a;
         public static final int cancel_action=0x7f0c006e;
         public static final int checkbox=0x7f0c003c;
@@ -1624,7 +1624,7 @@ containing a value of this type.
         public static final int src_atop=0x7f0c0024;
         public static final int src_in=0x7f0c0025;
         public static final int src_over=0x7f0c0026;
-        public static final int status=0x7f0c0060;
+        public static final int status=0x7f0c005f;
         public static final int status_bar_latest_event_content=0x7f0c006f;
         public static final int submit_area=0x7f0c004f;
         public static final int tabMode=0x7f0c000f;
@@ -1638,7 +1638,7 @@ containing a value of this type.
         public static final int textView5=0x7f0c006c;
         public static final int textView6=0x7f0c0053;
         public static final int textView7=0x7f0c0054;
-        public static final int textView8=0x7f0c0061;
+        public static final int textView8=0x7f0c0062;
         public static final int textView9=0x7f0c0063;
         public static final int time=0x7f0c0073;
         public static final int title=0x7f0c0030;
@@ -1739,6 +1739,7 @@ containing a value of this type.
         public static final int title_activity_modulo_aluno=0x7f060019;
         public static final int title_activity_modulo_professor=0x7f06001a;
         public static final int title_activity_register=0x7f06001b;
+        public static final int title_activity_teste=0x7f06001c;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080073;

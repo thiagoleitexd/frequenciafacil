@@ -31,7 +31,9 @@
         android:ems="10"
         android:hint="Digite a senha da aula"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center">
 
         <requestFocus />
     </EditText>

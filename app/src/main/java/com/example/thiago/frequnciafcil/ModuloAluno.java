@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -135,7 +136,12 @@ public class ModuloAluno extends ActionBarActivity {
                 //Função executada quando Houver Erro
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(ModuloAluno.this, "Erro: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    if (error instanceof NoConnectionError) {
+                        Toast.makeText(ModuloAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(ModuloAluno.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

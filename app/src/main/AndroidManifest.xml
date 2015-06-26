@@ -41,6 +41,10 @@ z
             android:name=".ModuloProfessor"
             android:label="@string/title_activity_modulo_professor" >
         </activity>
+        <activity
+            android:name=".Teste"
+            android:label="@string/title_activity_teste" >
+        </activity>
     </application>
 
 </manifest>

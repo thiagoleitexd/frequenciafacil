@@ -25,24 +25,24 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:textIsSelectable="false"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/button"
-        android:singleLine="false"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/status"
+        android:layout_alignEnd="@+id/status"
+        android:layout_alignLeft="@+id/status"
+        android:layout_alignStart="@+id/status" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bsenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="gerarSenha"
         android:text="Gerar Senha"
-        android:layout_below="@+id/status"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:hint="oi" />
+        android:hint="oi"
+        android:layout_alignTop="@+id/bstatus"
+        android:layout_alignLeft="@+id/bstatus"
+        android:layout_alignStart="@+id/bstatus"
+        android:layout_alignRight="@+id/bstatus"
+        android:layout_alignEnd="@+id/bstatus" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,7 +56,10 @@
         android:gravity="center"
         android:textIsSelectable="false"
         android:layout_alignTop="@+id/textView8"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/bsenha"
+        android:layout_alignEnd="@+id/bsenha"
+        android:layout_toRightOf="@+id/textView8"
+        android:layout_toEndOf="@+id/textView8" />
 
     <Button
         android:layout_width="wrap_content"
@@ -65,9 +68,9 @@
         android:id="@+id/bstatus"
         android:visibility="invisible"
         android:onClick="desligarFrequencia"
+        android:layout_marginBottom="93dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,8 +83,8 @@
         android:layout_alignLeft="@+id/titulo"
         android:layout_alignStart="@+id/titulo"
         android:layout_marginTop="58dp"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_toLeftOf="@+id/bsenha"
+        android:layout_toStartOf="@+id/bsenha" />
 
     <TextView
         android:layout_width="wrap_content"
