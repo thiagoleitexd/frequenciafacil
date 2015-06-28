@@ -112,7 +112,7 @@ public class ModuloAluno extends ActionBarActivity {
                     Log.i("Teste2", "Sucesso: " + response);
 
                     try {
-                        if (response.getString("error").equals("false")){
+                        if (response.getString("code").equals("1")){
 
                             Toast.makeText(ModuloAluno.this,
                                     "Presença Registrada com Sucesso!",

@@ -45,6 +45,15 @@ z
             android:name=".Teste"
             android:label="@string/title_activity_teste" >
         </activity>
+        <activity
+            android:name=".MainActivityProfessor"
+            android:label="@string/title_activity_main_activity_professor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

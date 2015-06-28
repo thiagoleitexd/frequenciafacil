@@ -46,17 +46,18 @@ public class ModuloProfessor extends ActionBarActivity {
     private String url;
     private String senhadaAula;
     private String status_inicial;
-    //ProgressDialog p_dialog;
+    private String msg = null;
+    private View all;
+    private ProgressDialog p_dialog;
 
-public void alerta(){
 
+    public void alerta(){
 
 
     AlertDialog.Builder alertDialogBuilder = new        AlertDialog.Builder(this);
-
     alertDialogBuilder.setTitle("Problema na Conexão");
     alertDialogBuilder.setMessage("Ocorreu erro na conexão com o servidor ou seu dispositivo encontra-se sem conexão com a internet.\nTente em alguns minutos");
-
+    
     alertDialogBuilder.setPositiveButton("Tentar Novamente",
             new DialogInterface.OnClickListener() {
 
@@ -68,93 +69,28 @@ public void alerta(){
                     }
                 });
             alertDialogBuilder.setNegativeButton("Sair",
-            new DialogInterface.OnClickListener() {
+                    new DialogInterface.OnClickListener() {
 
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    finish();
-                }
-            });
-
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            finish();
+                        }
+                    });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
 
-
-
-
-
 }
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modulo_professor);
-
         bstatus = (Button) findViewById(R.id.bstatus);
         bSenha = (Button) findViewById(R.id.bsenha);
         status = (TextView) findViewById(R.id.status);
         senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
-        params = new HashMap<String, String>();
-
-//inicio
-        url = MainActivity.urlGeral+"fecharFrequencia";
-
-
-
-        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
-            //Função executada quando Houver sucesso
-            @Override
-            public void onResponse(JSONObject response) {
-
-                String msg = null;
-
-                Log.i("Teste3", "Sucesso: " + response);
-
-                try {
-                    String erro = response.getString("error");
-                    msg = response.getString("message");
-
-                    if (erro.equals("false")){
-
-                        Toast.makeText(ModuloProfessor.this,
-                                "Status: Frequência Desligada",
-                                Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                    else {
-
-                        Toast.makeText(ModuloProfessor.this,
-                                msg,
-                                Toast.LENGTH_SHORT)
-                                .show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            //Função executada quando Houver Erro
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                alerta();
-                if (error instanceof NoConnectionError) {
-                    Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
         rq = Volley.newRequestQueue(ModuloProfessor.this);
-        cjor.setTag("tag");
-        rq.add(cjor);
-//fim
+
     }
 
     @Override
@@ -164,65 +100,8 @@ public void alerta(){
         return true;
     }
 //
-public void statusFrequencia(){
-    url = MainActivity.urlGeral+"statusFrequencia";
-    params = new HashMap<String, String>();
-
-    CustomJsonObjectResquestProf cjorr = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-
-        public void onResponse(JSONObject response) {
-
-            String msg = null;
 
 
-            Log.i("Teste3", "Sucesso: " + response);
-
-            try {
-                String erro = response.getString("error");
-                System.out.println(response);
-                msg = response.getString("message");
-
-                if (erro.equals("false")){
-
-
-                    Toast.makeText(ModuloProfessor.this,
-                           msg,
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                }
-                else {
-
-                    Toast.makeText(ModuloProfessor.this,
-                            msg,
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                }
-
-            } catch (JSONException e) {
-
-                e.printStackTrace();
-
-            }
-
-        }
-    }, new Response.ErrorListener() {
-        //Função executada quando Houver Erro
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            if (error instanceof NoConnectionError) {
-                Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-            }
-        }
-    });
-    cjorr.setTag("tag");
-    rq.add(cjorr);
-//fim
-}
     public String getSenhadaAula(){
         UUID uuid = UUID.randomUUID();
         String myRandom = uuid.toString();
@@ -249,29 +128,48 @@ public void statusFrequencia(){
             @Override
             public void onResponse(JSONObject response) {
 
-                String msg = null;
 
                 Log.i("Teste3", "Sucesso: " + response);
 
                 try {
-                    String erro = response.getString("error");
+                    String erro = response.getString("code");
                     msg = response.getString("message");
 
-                    if (erro.equals("false")){
+                    if (erro.equals("14")){
                         senhaGerada.setText(senhadaAula);
                         estilo();
 
                         Toast.makeText(ModuloProfessor.this,
-                                "Senha Registrada com Sucesso!",
-                                Toast.LENGTH_SHORT)
+                                "Professor, a senha foi gerada com sucesso! Informe-a aos alunos.",
+                                Toast.LENGTH_LONG)
                                 .show();
 
                     }
-                    else {
+                    else if (erro.equals("12")){
 
                         Toast.makeText(ModuloProfessor.this,
+                                "Professor, já existe uma frequência em aberto.",
+                                Toast.LENGTH_LONG)
+                                .show();
+
+                    }
+                    else if (erro.equals("10")){
+                        Toast.makeText(ModuloProfessor.this,
+                                "Professor, a frequência foi fechada com sucesso.",
+                                Toast.LENGTH_LONG)
+                                .show();
+
+                    }
+                    else if (erro.equals("9")) {
+                        Toast.makeText(ModuloProfessor.this,
+                                "Professor, neste momento não há nenhuma frequência em aberto.",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                        else {
+                        Toast.makeText(ModuloProfessor.this,
                                 msg,
-                                Toast.LENGTH_SHORT)
+                                Toast.LENGTH_LONG)
                                 .show();
 
                     }
@@ -340,10 +238,10 @@ public void statusFrequencia(){
                 Log.i("Teste3", "Sucesso: " + response);
 
                 try {
-                    String erro = response.getString("error");
+                    String erro = response.getString("code");
                     msg = response.getString("message");
 
-                    if (erro.equals("false")){
+                    if (erro.equals("10")){
 
                         status.setText("Desligado");
                         anim.setRepeatCount(0);
@@ -353,8 +251,8 @@ public void statusFrequencia(){
                         senhaGerada.setText("");
 
                         Toast.makeText(ModuloProfessor.this,
-                                "Frequência Desligada",
-                                Toast.LENGTH_SHORT)
+                                "Professor, a frequência foi desligada com sucesso.",
+                                Toast.LENGTH_LONG)
                                 .show();
 
                     }
@@ -415,8 +313,11 @@ public void statusFrequencia(){
                 System.out.println("exit");
                 System.exit(1);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }

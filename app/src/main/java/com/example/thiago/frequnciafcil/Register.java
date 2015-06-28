@@ -84,7 +84,7 @@ public class Register extends ActionBarActivity {
                         try {
                             //erro = response.getString("error");
                             msg = response.getString("message");
-                            codigo = response.getString("codigo");
+                            codigo = response.getString("code");
                         } catch (JSONException e) {
                             System.out.println("testeeeeee");
                             e.printStackTrace();
@@ -103,21 +103,21 @@ public class Register extends ActionBarActivity {
                         }
                         else if (codigo.equals("2")) {
                             Toast.makeText(Register.this,
-                                    "Esse E-mail já cadastrado no sistema. Tente outro.",
+                                    "Esse E-mail já está cadastrado no sistema. Tente outro.",
                                     Toast.LENGTH_LONG)
                                     .show();
 
                         }
                         else if (codigo.equals("3")) {
                             Toast.makeText(Register.this,
-                                    "Essa Matrícula ja cadastrada no sistema. Tente outro.",
+                                    "Essa Matrícula ja está cadastrada no sistema. Tente outro.",
                                     Toast.LENGTH_LONG)
                                     .show();
 
                         }
                         else if (codigo.equals("4")) {
                             Toast.makeText(Register.this,
-                                    "Esse E-mail e Matrícula já estão cadastradas no sistema.",
+                                    "Esse E-mail e essa Matrícula já estão cadastradas no sistema.",
                                     Toast.LENGTH_LONG)
                                     .show();
 

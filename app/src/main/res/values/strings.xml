@@ -11,4 +11,5 @@
     <string name="title_activity_register">Register</string>
     <string name="title_activity_modulo_professor">ModuloProfessor</string>
     <string name="title_activity_teste">Teste</string>
+    <string name="title_activity_main_activity_professor">MainActivityProfessor</string>
 </resources>

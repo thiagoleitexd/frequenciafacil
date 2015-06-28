@@ -57,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void comunicacacao() {
             p_dialog = ProgressDialog.show(this, "Verificando Login e Senha", "Aguarde...", false, true);
-            System.out.println("errando1");
+
             url = urlGeral + "login";
             params = new HashMap<String, String>();
             params.put("email", login.getText().toString());
@@ -68,12 +68,12 @@ public class MainActivity extends ActionBarActivity {
 
                 @Override
                 public void onResponse(JSONObject response) {
-                    System.out.println("errando3");
+
                     Log.i("Teste2", "Sucesso: " + response);
                     flag = 1;
                     p_dialog.dismiss();
                     try {
-                        System.out.println("errando4");
+
                         Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
                         intent.putExtra("name", response.getString("name"));
@@ -100,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    System.out.println("errando6");
+
 
                     if (error instanceof NoConnectionError) {
                         Toast.makeText(MainActivity.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
 
-            System.out.println("errando7");
+
             cjor.setTag("tag");
             rq.add(cjor);
 
