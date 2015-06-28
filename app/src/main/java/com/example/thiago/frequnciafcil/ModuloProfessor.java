@@ -190,7 +190,7 @@ public class ModuloProfessor extends ActionBarActivity {
                     Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -256,11 +256,18 @@ public class ModuloProfessor extends ActionBarActivity {
                                 .show();
 
                     }
-                    else {
+                    else if(erro.equals("11")){
 
                         Toast.makeText(ModuloProfessor.this,
+                                "Professor, neste Momento não há frequência em aberto.",
+                                Toast.LENGTH_LONG)
+                                .show();
+
+                    }
+                    else {
+                        Toast.makeText(ModuloProfessor.this,
                                 msg,
-                                Toast.LENGTH_SHORT)
+                                Toast.LENGTH_LONG)
                                 .show();
 
                     }
@@ -280,7 +287,7 @@ public class ModuloProfessor extends ActionBarActivity {
                     Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModuloProfessor.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
                 }
             }
         });

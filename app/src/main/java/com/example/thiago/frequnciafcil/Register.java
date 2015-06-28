@@ -117,7 +117,7 @@ public class Register extends ActionBarActivity {
                         }
                         else if (codigo.equals("4")) {
                             Toast.makeText(Register.this,
-                                    "Esse E-mail e essa Matrícula já estão cadastradas no sistema.",
+                                    "Esse E-mail e essa Matrícula já estão cadastrados no sistema.",
                                     Toast.LENGTH_LONG)
                                     .show();
 

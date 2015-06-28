@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
             params = new HashMap<String, String>();
             params.put("email", login.getText().toString());
             params.put("password", password.getText().toString());
-            System.out.println("errando2");
+
             cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
                 //Função executada quando Houver sucesso
 
@@ -85,7 +85,6 @@ public class MainActivity extends ActionBarActivity {
 
                         startActivity(intent);
                     } catch (JSONException e) {
-                        System.out.println("errando5");
                         Toast.makeText(MainActivity.this,
                                 "Login ou Senha incorretos.",
                                 Toast.LENGTH_SHORT)
@@ -101,14 +100,11 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-
+                    p_dialog.dismiss();
                     if (error instanceof NoConnectionError) {
                         Toast.makeText(MainActivity.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                        p_dialog.dismiss();
                     }  else{
                         Toast.makeText(MainActivity.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
-                        SystemClock.sleep(7000);
-                        comunicacacao();
                     }
 
                 }
