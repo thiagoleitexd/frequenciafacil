@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Frequência Fácil</string>
+    <string name="app_name">Pagela Virtual</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Sobre</string>
@@ -7,9 +7,8 @@
     <string name="senha" />
     <string name="login" />
     <string name="entrar" />
-    <string name="title_activity_modulo_aluno">ModuloAluno</string>
-    <string name="title_activity_register">Register</string>
-    <string name="title_activity_modulo_professor">ModuloProfessor</string>
-    <string name="title_activity_teste">Teste</string>
-    <string name="title_activity_main_activity_professor">MainActivityProfessor</string>
+    <string name="title_activity_modulo_aluno">Modulo do Aluno</string>
+    <string name="title_activity_register">Registro</string>
+    <string name="title_activity_modulo_professor">Modulo do Professor</string>
+    <string name="title_activity_main_activity_professor">Tela Inicial - Modulo do Professor</string>
 </resources>

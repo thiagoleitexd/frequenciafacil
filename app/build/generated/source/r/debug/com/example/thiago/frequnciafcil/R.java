@@ -1743,7 +1743,6 @@ containing a value of this type.
         public static final int title_activity_modulo_aluno=0x7f06001a;
         public static final int title_activity_modulo_professor=0x7f06001b;
         public static final int title_activity_register=0x7f06001c;
-        public static final int title_activity_teste=0x7f06001d;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080073;

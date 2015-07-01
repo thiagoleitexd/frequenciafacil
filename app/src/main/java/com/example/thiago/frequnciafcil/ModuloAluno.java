@@ -57,7 +57,7 @@ public class ModuloAluno extends ActionBarActivity {
         Intent intent = getIntent();
         apikey = intent.getStringExtra("apiKey");
         String nome = intent.getStringExtra("name");
-        apresentacao.setText("Olá, " + nome + "!\nSeja bem vindo ao aplicativo Frequência Fácil.");
+        apresentacao.setText("Olá, " + nome + "!\nSeja bem vindo ao aplicativo Pagela Virtual.");
 
         rq = Volley.newRequestQueue(ModuloAluno.this);
     }

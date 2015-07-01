@@ -42,10 +42,6 @@ z
             android:label="@string/title_activity_modulo_professor" >
         </activity>
         <activity
-            android:name=".Teste"
-            android:label="@string/title_activity_teste" >
-        </activity>
-        <activity
             android:name=".MainActivityProfessor"
             android:label="@string/title_activity_main_activity_professor" >
             <intent-filter>

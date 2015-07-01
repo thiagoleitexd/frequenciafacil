@@ -243,7 +243,7 @@ public class Register extends ActionBarActivity {
         }
         if ((TextUtils.isEmpty(matV)) || (matV.length() != 8) || (!isAlpha(matV))){
             mat.requestFocus(); //seta o foco para o campo password
-            mat.setError("Sua Matrícula deve conter somente números contendo 8 digitos");
+            mat.setError("Sua Matrícula deve conter somente números com exatamente 8 digitos");
             cont ++;
             //return true;
         }

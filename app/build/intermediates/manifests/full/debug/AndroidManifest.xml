@@ -46,10 +46,6 @@ z
             android:label="@string/title_activity_modulo_professor" >
         </activity>
         <activity
-            android:name="com.example.thiago.frequnciafcil.Teste"
-            android:label="@string/title_activity_teste" >
-        </activity>
-        <activity
             android:name="com.example.thiago.frequnciafcil.MainActivityProfessor"
             android:label="@string/title_activity_main_activity_professor" >
             <intent-filter>
