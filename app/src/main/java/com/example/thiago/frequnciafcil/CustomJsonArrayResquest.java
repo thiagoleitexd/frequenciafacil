@@ -15,9 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by fabricio on 16/06/15.
- */
+
 
 //Classe criada para possibilitar o envio do JSON por meio do POST
 //sobrescrevendo alguns métodos
@@ -77,7 +75,7 @@ public class CustomJsonArrayResquest extends Request<JSONArray> {
 
     @Override
     protected void deliverResponse(JSONArray response) {
-        Log.i("Teste2", response.toString());
+        Log.i("Teste(X)", response.toString());
         this.response.onResponse(response);
     }
 }

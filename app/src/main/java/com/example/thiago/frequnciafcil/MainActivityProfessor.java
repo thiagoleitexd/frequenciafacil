@@ -57,7 +57,7 @@ public class MainActivityProfessor extends ActionBarActivity {
         url = MainActivity.urlGeral+"fecharFrequencia";
         p_dialog = ProgressDialog.show(this, "Conentando ao Servidor", "Aguarde...", false, true);
 
-        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
+CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {

@@ -3,6 +3,7 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/material_deep_teal_500"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
 
@@ -101,4 +102,4 @@
 
 
 </RelativeLayout>
-<!-- From: file:/home/thiago/StudioProjects/frequenciafacil/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/home/thiago/AndroidStudioProjects/frequenciafacil/app/src/main/res/layout/activity_main.xml -->

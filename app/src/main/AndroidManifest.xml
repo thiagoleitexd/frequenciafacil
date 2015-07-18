@@ -50,6 +50,14 @@ z
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AlunoFaltas"
+            android:label="@string/title_activity_aluno_faltas" >
+        </activity>
+        <activity
+            android:name=".AlunosPresentes"
+            android:label="@string/title_activity_alunos_presentes" >
+        </activity>
     </application>
 
 </manifest>

@@ -165,7 +165,7 @@ public class Register extends ActionBarActivity {
     //inicio do about
     public void open(View view){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Frequência Fácil");
+        alertDialogBuilder.setTitle("Pagela Virtual");
         alertDialogBuilder.setMessage("Versão 1.0");
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
