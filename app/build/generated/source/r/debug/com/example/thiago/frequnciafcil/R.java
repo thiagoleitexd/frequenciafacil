@@ -1542,6 +1542,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0c0041;
         public static final int action_mode_bar_stub=0x7f0c0040;
         public static final int action_mode_close_button=0x7f0c0029;
+        public static final int action_relatorio_aluno=0x7f0c0084;
         public static final int action_settings=0x7f0c0082;
         public static final int activity_chooser_view_content=0x7f0c002a;
         public static final int alertTitle=0x7f0c0034;
@@ -1743,19 +1744,20 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f06000c;
         public static final int abc_toolbar_collapse_description=0x7f060010;
         public static final int action_exit=0x7f060011;
-        public static final int action_settings=0x7f060012;
-        public static final int app_name=0x7f060013;
-        public static final int entrar=0x7f060014;
-        public static final int hello_world=0x7f060015;
-        public static final int login=0x7f060016;
-        public static final int senha=0x7f060017;
-        public static final int status_bar_notification_info_overflow=0x7f060018;
-        public static final int title_activity_aluno_faltas=0x7f060019;
-        public static final int title_activity_alunos_presentes=0x7f06001a;
-        public static final int title_activity_main_activity_professor=0x7f06001b;
-        public static final int title_activity_modulo_aluno=0x7f06001c;
-        public static final int title_activity_modulo_professor=0x7f06001d;
-        public static final int title_activity_register=0x7f06001e;
+        public static final int action_relatorio_aluno=0x7f060012;
+        public static final int action_settings=0x7f060013;
+        public static final int app_name=0x7f060014;
+        public static final int entrar=0x7f060015;
+        public static final int hello_world=0x7f060016;
+        public static final int login=0x7f060017;
+        public static final int senha=0x7f060018;
+        public static final int status_bar_notification_info_overflow=0x7f060019;
+        public static final int title_activity_aluno_faltas=0x7f06001a;
+        public static final int title_activity_alunos_presentes=0x7f06001b;
+        public static final int title_activity_main_activity_professor=0x7f06001c;
+        public static final int title_activity_modulo_aluno=0x7f06001d;
+        public static final int title_activity_modulo_professor=0x7f06001e;
+        public static final int title_activity_register=0x7f06001f;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080073;

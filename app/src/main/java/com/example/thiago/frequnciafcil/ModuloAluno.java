@@ -1,6 +1,7 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -92,6 +93,10 @@ public class ModuloAluno extends ActionBarActivity {
                 System.out.println("exit");
                 System.exit(1);
                 return true;
+            case R.id.action_relatorio_aluno:
+                Intent intent = new Intent(ModuloAluno.this, AlunoFaltas.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -112,12 +117,32 @@ public class ModuloAluno extends ActionBarActivity {
                     Log.i("Teste2", "Sucesso: " + response);
 
                     try {
-                        if (response.getString("code").equals("1")){
+                        if (response.getString("code").equals("4")){
 
                             Toast.makeText(ModuloAluno.this,
                                     "Presença Registrada com Sucesso!",
                                     Toast.LENGTH_SHORT)
                                     .show();
+
+                            AlertDialog.Builder presencaconfirmada = new AlertDialog.Builder(ModuloAluno.this);
+                            presencaconfirmada.setTitle("Presença Confirmada.");
+                            presencaconfirmada.setMessage("Aproveite a Aula.");
+
+                            presencaconfirmada.setPositiveButton("Sair",
+                                    new DialogInterface.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(DialogInterface arg0, int arg1) {
+
+                                        }
+                                    });
+
+
+                            AlertDialog alertDialog = presencaconfirmada.create();
+                            alertDialog.show();
+
+
+
                         }
                         else{
 
@@ -125,6 +150,24 @@ public class ModuloAluno extends ActionBarActivity {
                                     response.getString("message"),
                                     Toast.LENGTH_SHORT)
                                     .show();
+
+                            AlertDialog.Builder presencaconfirmada = new AlertDialog.Builder(ModuloAluno.this);
+                            presencaconfirmada.setTitle("Presença");
+                            presencaconfirmada.setMessage(response.getString("message"));
+
+                            presencaconfirmada.setPositiveButton("Sair",
+                                    new DialogInterface.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(DialogInterface arg0, int arg1) {
+
+                                        }
+                                    });
+
+
+                            AlertDialog alertDialog = presencaconfirmada.create();
+                            alertDialog.show();
+
 
                         }
                     } catch (JSONException e) {

@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/material_deep_teal_500"
+    android:background="#009688"
 
     tools:context="com.example.thiago.frequnciafcil.AlunosPresentes">
 
@@ -24,22 +24,27 @@
         android:id="@+id/textView10"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/textView12"
-        android:layout_alignStart="@+id/textView12" />
+        android:layout_alignStart="@+id/textView12"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/total_presentes"
-        android:layout_alignTop="@+id/textView10"
-        android:layout_toRightOf="@+id/textView12"
-        android:layout_toEndOf="@+id/textView12" />
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_alignBaseline="@+id/textView10"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Relatório de Presentes"
+        android:text="Relatório de Alunos Presentes"
         android:id="@+id/textView12"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

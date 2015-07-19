@@ -49,17 +49,17 @@ public class AlunoFaltas extends ActionBarActivity {
         total_faltas = (TextView) findViewById(R.id.total_faltas);
 
         //inicio
-        String url = MainActivity.urlGeral+"listarAlunosPresentes";
+        String url = MainActivity.urlGeral + "listarAlunosPresentes";
 
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {
-            int i;
+                int i;
 
                 try {
                     JSONArray lista_data = (JSONArray) response.get("alunos");
-                    for(i=0; i< lista_data.length(); i++){
+                    for (i = 0; i < lista_data.length(); i++) {
 
                         items.add(lista_data.getJSONObject(i).get("nome").toString());
 //                        items.add("Item 2");
@@ -80,7 +80,6 @@ public class AlunoFaltas extends ActionBarActivity {
                 }
 
 
-
             }
         }, new Response.ErrorListener() {
             //Função executada quando Houver Erro
@@ -88,8 +87,7 @@ public class AlunoFaltas extends ActionBarActivity {
             public void onErrorResponse(VolleyError error) {
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(AlunoFaltas.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                }
-                else {
+                } else {
                     Toast.makeText(AlunoFaltas.this, error.toString(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -112,7 +110,7 @@ public class AlunoFaltas extends ActionBarActivity {
         return true;
     }
 
-    public void open(View view){
+    public void open(View view) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Pagela Virtual");
         alertDialogBuilder.setMessage("Versão 1.0");
@@ -125,13 +123,17 @@ public class AlunoFaltas extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                open(null);
+                return true;
+            case R.id.action_exit:
+                System.out.println("exit");
+                System.exit(1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }

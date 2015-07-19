@@ -207,6 +207,7 @@
     <!-- From: file:/home/thiago/frequenciafacil/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_exit">Sair</string>
+    <string name="action_relatorio_aluno">Relatório de Faltas</string>
     <string name="action_settings">Sobre</string>
     <string name="app_name">Pagela Virtual</string>
     <string name="entrar"/>
