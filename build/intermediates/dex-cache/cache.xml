@@ -2,60 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-f11903820fa2c667454420b40951d8b2331d09b2.jar" />
-    </item>
-    <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-92d3c417983a477a69e8c5165408b80cbe24522d.jar" />
-    </item>
-    <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-92d3c417983a477a69e8c5165408b80cbe24522d.jar" />
-    </item>
-    <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-f9c4169ef96c48fcb237b37d3495a702784dff6e.jar" />
-    </item>
-    <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-f9c4169ef96c48fcb237b37d3495a702784dff6e.jar" />
-    </item>
-    <item
-        jar="/home/thiago/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/home/thiago/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-89cdcc766d0f79ef9baf501c2ac11fce67d741fe.jar" />
+        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-feaadab6f5fbe39c12f2de805d70dc2eb7a192dc.jar" />
     </item>
     <item
-        jar="/home/thiago/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-89cdcc766d0f79ef9baf501c2ac11fce67d741fe.jar" />
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-39de81c1031cb70320e4df3641e43166f8d0962b.jar" />
     </item>
     <item
-        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1ffb5af55322ffe61b8c57847336f6432fc09afd.jar" />
+    </item>
+    <item
+        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-f11903820fa2c667454420b40951d8b2331d09b2.jar" />
+        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-d26cc9b40470adfed84528bbd886e2c28a03677a.jar" />
     </item>
 
 </items>
