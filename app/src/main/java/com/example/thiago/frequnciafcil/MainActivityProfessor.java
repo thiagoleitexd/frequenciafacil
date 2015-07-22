@@ -54,7 +54,7 @@ public class MainActivityProfessor extends ActionBarActivity {
         senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
         params = new HashMap<String, String>();
         url = MainActivityAluno.urlGeral+"fecharFrequencia";
-        p_dialog = ProgressDialog.show(this, "Conentando ao Servidor", "Aguarde...", false, true);
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
 CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso

@@ -47,7 +47,7 @@ public class AlunoFaltas extends ActionBarActivity {
         //inicio
         String url = MainActivityAluno.urlGeral + "listarFaltas";
 
-        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
+        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {
@@ -55,9 +55,11 @@ public class AlunoFaltas extends ActionBarActivity {
 
                 try {
                     JSONArray lista_data = (JSONArray) response.get("data");
-                    for (i = 0; i < lista_data.length(); i++) {
 
-                        items.add(lista_data.getJSONObject(i).toString());
+
+
+                    for (i = 0; i < lista_data.length(); i++) {
+                        items.add(lista_data.get(i).toString());
 //                        items.add("Item 2");
 //                        items.add("Item 3");
 //                          System.out.println(lista_data.getJSONObject(i).get("nome"));

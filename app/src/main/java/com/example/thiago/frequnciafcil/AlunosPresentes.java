@@ -3,9 +3,11 @@ package com.example.thiago.frequnciafcil;
 import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +36,8 @@ public class AlunosPresentes extends ActionBarActivity {
     private ListView lstItems;
     private List<String> items;
     private TextView total_presentes;
+    public String [] matriculas;
+    public String [] ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +56,18 @@ public class AlunosPresentes extends ActionBarActivity {
             @Override
             public void onResponse(JSONObject response) {
                 int i;
-
+                matriculas = new String[100];
+                ids = new String[100];
                 try {
+
+
                     JSONArray lista_data = (JSONArray) response.get("alunos");
                     for(i=0; i< lista_data.length(); i++){
+                        items.add("nome: " +lista_data.getJSONObject(i).get("nome").toString()
+                                 +"\nmatricula: "+lista_data.getJSONObject(i).get("matricula").toString());
 
-                        items.add(lista_data.getJSONObject(i).get("nome").toString());
-//                          System.out.println(lista_data.getJSONObject(i).get("nome"));
-//                          System.out.println(lista_data.getJSONObject(i).get("matricula"));
+                        matriculas[i]= String.valueOf(lista_data.getJSONObject(i).get("matricula").toString());
+                        //ids[i] = String.valueOf(lista_data.getJSONObject(i).get("id").toString());
                     }
                     lstItems = (ListView) findViewById(R.id.lista_presentes);
                     total_presentes.setText(String.valueOf(lista_data.length()));
@@ -67,7 +75,24 @@ public class AlunosPresentes extends ActionBarActivity {
                             android.R.layout.simple_list_item_1,
                             items);
                     lstItems.setAdapter(adapter);
-
+//parte referente  aos 'links' do list view
+                    lstItems.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                    {
+                        public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                        {
+                            AlertDialog.Builder adb = new AlertDialog.Builder(
+                                    AlunosPresentes.this);
+                            adb.setTitle("Matricula Selecionada");
+                            adb.setMessage("A matricula selecionada foi: "
+                                    + matriculas[position]);
+                            //adb.setMessage("A matricula selecionada foi: "
+                              //      + ids[position]);
+                                    // + lstItems.getItemAtPosition(position));
+                                    adb.setPositiveButton("Ok", null);
+                            adb.show();
+                        }
+                    });
+// fim da parte referente  aos 'links' do list view
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -128,4 +153,5 @@ public class AlunosPresentes extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
