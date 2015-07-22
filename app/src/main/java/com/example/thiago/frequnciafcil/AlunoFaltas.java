@@ -1,10 +1,8 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,14 +17,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.example.thiago.frequnciafcil.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +45,7 @@ public class AlunoFaltas extends ActionBarActivity {
         total_faltas = (TextView) findViewById(R.id.total_faltas);
 
         //inicio
-        String url = MainActivity.urlGeral + "listarAlunosPresentes";
+        String url = MainActivityAluno.urlGeral + "listarFaltas";
 
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
@@ -58,10 +54,10 @@ public class AlunoFaltas extends ActionBarActivity {
                 int i;
 
                 try {
-                    JSONArray lista_data = (JSONArray) response.get("alunos");
+                    JSONArray lista_data = (JSONArray) response.get("data");
                     for (i = 0; i < lista_data.length(); i++) {
 
-                        items.add(lista_data.getJSONObject(i).get("nome").toString());
+                        items.add(lista_data.getJSONObject(i).toString());
 //                        items.add("Item 2");
 //                        items.add("Item 3");
 //                          System.out.println(lista_data.getJSONObject(i).get("nome"));

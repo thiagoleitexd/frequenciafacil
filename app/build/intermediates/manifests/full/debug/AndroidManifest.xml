@@ -24,7 +24,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.thiago.frequnciafcil.MainActivity"
+            android:name="com.example.thiago.frequnciafcil.MainActivityAluno"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,6 +61,15 @@ z
         <activity
             android:name="com.example.thiago.frequnciafcil.AlunosPresentes"
             android:label="@string/title_activity_alunos_presentes" >
+        </activity>
+        <activity
+            android:name="com.example.thiago.frequnciafcil.PagelaVirtual"
+            android:label="@string/title_activity_pagela_virtual" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

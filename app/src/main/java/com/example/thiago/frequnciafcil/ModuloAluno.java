@@ -47,7 +47,7 @@ public class ModuloAluno extends ActionBarActivity {
 
         TextView apresentacao = (TextView) findViewById(R.id.apresentacao);
         senhaAula = (EditText) findViewById(R.id.senhaaula);
-        url = MainActivity.urlGeral+"registrarPresenca";
+        url = MainActivityAluno.urlGeral+"registrarPresenca";
         array_spinner=new String[1];
         array_spinner[0]="Redes de computadores";
         Spinner s = (Spinner) findViewById(R.id.disciplinas);

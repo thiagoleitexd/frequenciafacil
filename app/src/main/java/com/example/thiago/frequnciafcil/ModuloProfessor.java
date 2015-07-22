@@ -112,7 +112,7 @@ public class ModuloProfessor extends ActionBarActivity {
 
     public void gerarSenha(View v){
 
-        url = MainActivity.urlGeral+"criarFrequencia";
+        url = MainActivityAluno.urlGeral+"criarFrequencia";
         params = new HashMap<String, String>();
 
 
@@ -223,7 +223,7 @@ public class ModuloProfessor extends ActionBarActivity {
     public void desligarFrequencia(View V){
 
 //inicio
-        url = MainActivity.urlGeral+"fecharFrequencia";
+        url = MainActivityAluno.urlGeral+"fecharFrequencia";
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
 

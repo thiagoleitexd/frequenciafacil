@@ -47,7 +47,7 @@ public class Register extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         codigo = "0";
-        url = MainActivity.urlGeral+"register";
+        url = MainActivityAluno.urlGeral+"register";
         nome = (EditText) findViewById(R.id.idNomeR);
         login = (EditText) findViewById(R.id.idLoginR);
         password = (EditText) findViewById(R.id.idSenhaR);
@@ -93,7 +93,7 @@ public class Register extends ActionBarActivity {
                         if (codigo.equals("1")) {
                             Log.i("Teste2", "Sucesso: " + response);
 
-                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            Intent intent = new Intent(Register.this, MainActivityAluno.class);
                             intent.putExtra("login", login.getText().toString());
                             Toast.makeText(Register.this,
                                     "Cadastro Efetuado com sucesso",

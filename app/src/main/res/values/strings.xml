@@ -14,4 +14,6 @@
     <string name="title_activity_main_activity_professor">Tela Inicial - Modulo do Professor</string>
     <string name="title_activity_aluno_faltas">AlunoFaltas</string>
     <string name="title_activity_alunos_presentes">AlunosPresentes</string>
+    <string name="title_activity_pagela_virtual">PagelaVirtual</string>
+    <string name="title_activity_pagela_virtual_professor">PagelaVirtualProfessor</string>
 </resources>

@@ -1,10 +1,8 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,14 +17,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.example.thiago.frequnciafcil.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +45,7 @@ public class AlunosPresentes extends ActionBarActivity {
         total_presentes = (TextView) findViewById(R.id.total_presentes);
 
         //inicio
-        String url = MainActivity.urlGeral+"listarAlunosPresentes";
+        String url = MainActivityAluno.urlGeral+"listarAlunosPresentes";
 
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso

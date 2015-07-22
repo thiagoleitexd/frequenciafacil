@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,17 +20,18 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.example.thiago.frequnciafcil.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivityProfessor extends ActionBarActivity {
 
-
+    private int contBack = 0;
     private RequestQueue rq;
     private Map<String, String> params;
     private EditText senhaGerada;
@@ -54,7 +53,7 @@ public class MainActivityProfessor extends ActionBarActivity {
         status = (TextView) findViewById(R.id.status);
         senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
         params = new HashMap<String, String>();
-        url = MainActivity.urlGeral+"fecharFrequencia";
+        url = MainActivityAluno.urlGeral+"fecharFrequencia";
         p_dialog = ProgressDialog.show(this, "Conentando ao Servidor", "Aguarde...", false, true);
 
 CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
@@ -76,11 +75,15 @@ CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Met
                                 Toast.LENGTH_SHORT)
                                 .show();
 
-                        Intent intent = new Intent(MainActivityProfessor.this, ModuloProfessor.class);
-                        finish();
-                        startActivity(intent);
+                        new Timer().schedule(new TimerTask() {
+                            public void run() {
+                                Intent intent = new Intent(MainActivityProfessor.this, ModuloProfessor.class);
+                                finish();
+                                startActivity(intent);
+                            }
+                        }, 2000 /*amount of time in milliseconds before execution*/);
 
-                    }
+                      }
                     else {
 
                         Toast.makeText(MainActivityProfessor.this,

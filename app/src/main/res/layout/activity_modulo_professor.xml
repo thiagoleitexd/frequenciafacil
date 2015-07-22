@@ -34,11 +34,19 @@
 
     <Button
         android:id="@+id/bsenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:onClick="gerarSenha"
         android:text="Gerar Senha"
-        android:hint="oi"
+
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+
         android:layout_alignTop="@+id/bstatus"
         android:layout_alignLeft="@+id/bstatus"
         android:layout_alignStart="@+id/bstatus"
@@ -63,11 +71,21 @@
         android:layout_toEndOf="@+id/textView8" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Desligar Frequência"
         android:id="@+id/bstatus"
         android:visibility="invisible"
+
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+
+
         android:onClick="desligarFrequencia"
         android:layout_marginBottom="93dp"
         android:layout_alignParentBottom="true"

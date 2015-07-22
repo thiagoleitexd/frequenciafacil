@@ -2,10 +2,8 @@ package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,10 +25,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivityAluno extends ActionBarActivity {
+    private int contBack =0;
     public static String urlGeral = "http://redesdecomputadores.esy.es/checkin/v1/";
     private RequestQueue rq;
     private Map<String, String> params;
@@ -43,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_aluno);
 
         String login_adquirido = null;
         Intent intent = getIntent();
@@ -52,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
             login = (EditText) findViewById(R.id.idLogin);
             login.setText(login_adquirido);
         }
-        rq = Volley.newRequestQueue(MainActivity.this);
+        rq = Volley.newRequestQueue(MainActivityAluno.this);
     }
 
     public void comunicacacao() {
@@ -74,18 +72,18 @@ public class MainActivity extends ActionBarActivity {
                     p_dialog.dismiss();
                     try {
 
-                        Intent intent = new Intent(MainActivity.this, ModuloAluno.class);
+                        Intent intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
                         intent.putExtra("name", response.getString("name"));
 
-                        Toast.makeText(MainActivity.this,
+                        Toast.makeText(MainActivityAluno.this,
                                 "Login Efetuado com Sucesso.",
                                 Toast.LENGTH_SHORT)
                                 .show();
 
                         startActivity(intent);
                     } catch (JSONException e) {
-                        Toast.makeText(MainActivity.this,
+                        Toast.makeText(MainActivityAluno.this,
                                 "Login ou Senha incorretos.",
                                 Toast.LENGTH_SHORT)
                                 .show();
@@ -102,9 +100,9 @@ public class MainActivity extends ActionBarActivity {
 
                     p_dialog.dismiss();
                     if (error instanceof NoConnectionError) {
-                        Toast.makeText(MainActivity.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivityAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                     }  else{
-                        Toast.makeText(MainActivity.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivityAluno.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -140,7 +138,7 @@ public class MainActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Erro: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivityAluno.this, "Erro: "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -156,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void registrar(View v) {
-        Intent intent = new Intent(MainActivity.this, Register.class);
+        Intent intent = new Intent(MainActivityAluno.this, Register.class);
         startActivity(intent);
 
     }
@@ -221,4 +219,16 @@ public class MainActivity extends ActionBarActivity {
         return false;
     }
 
+
+    public void onBackPressed() {//metodo responsável pelo botão 'back' do android;
+
+        Toast.makeText(MainActivityAluno.this,"Pressione novamente para sair do aplicativo.",Toast.LENGTH_LONG).show();
+        if (contBack != 0) {
+            contBack = 0;
+            finish();
+        }
+        contBack ++;
+    }
+
 }
+
