@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.thiago.frequnciafcil.R;
 
@@ -20,13 +21,13 @@ public class PagelaVirtual extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagela_virtual);
 
-        new Timer().schedule(new TimerTask() {
-            public void run() {
-                startActivity(new Intent(PagelaVirtual.this, MainActivityAluno.class));
-                finish();
-            }
-        }, 2000 /*amount of time in milliseconds before execution*/);
-
+    //    new Timer().schedule(new TimerTask() {
+    //        public void run() {
+    //            startActivity(new Intent(PagelaVirtual.this, MainActivityAluno.class));
+    //            finish();
+    //        }
+    //    }, 2000 /*amount of time in milliseconds before execution*/);
+    //
     }
 
     @Override
@@ -50,4 +51,23 @@ public class PagelaVirtual extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void irTelaProfessor(View v){
+
+        Intent intent;
+        intent = new Intent(PagelaVirtual.this,MainActivityAluno.class);
+        intent.putExtra("levelacess","1");
+        startActivity(intent);
+    }
+
+    public void irTelaAluno(View v){
+
+        Intent intent;
+        intent = new Intent(PagelaVirtual.this,MainActivityAluno.class);
+        intent.putExtra("levelacess","2");
+        startActivity(intent);
+
+    }
+
 }

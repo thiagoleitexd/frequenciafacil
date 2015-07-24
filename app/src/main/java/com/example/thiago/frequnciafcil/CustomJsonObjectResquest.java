@@ -48,9 +48,9 @@ public class CustomJsonObjectResquest extends Request<JSONObject> {
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError{
         HashMap<String, String> header = new HashMap<String, String>();
-        Log.i("APIKEY", "APIKEY");
     //    header.put("Authorization", "5caf1000e7a1b3f2615da7e5283a9062");
        header.put("Authorization", ModuloAluno.apikey);
+       header.put("Levelacess", MainActivityAluno.levelacess);  //1 = professor | 2 = aluno
         return (header);
     }
 

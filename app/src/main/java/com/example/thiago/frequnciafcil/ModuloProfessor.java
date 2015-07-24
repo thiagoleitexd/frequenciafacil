@@ -318,6 +318,10 @@ public class ModuloProfessor extends ActionBarActivity {
                 System.out.println("exit");
                 System.exit(1);
                 return true;
+            case R.id.action_relatorio_aluno:
+                Intent intent = new Intent(ModuloProfessor.this, AlunosPresentes.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

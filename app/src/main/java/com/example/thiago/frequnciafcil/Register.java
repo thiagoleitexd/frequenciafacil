@@ -95,6 +95,7 @@ public class Register extends ActionBarActivity {
 
                             Intent intent = new Intent(Register.this, MainActivityAluno.class);
                             intent.putExtra("login", login.getText().toString());
+                            intent.putExtra("levelacess", "2");
                             Toast.makeText(Register.this,
                                     "Cadastro Efetuado com sucesso",
                                     Toast.LENGTH_LONG)

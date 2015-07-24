@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import java.util.Map;
 
 public class MainActivityAluno extends ActionBarActivity {
     private int contBack =0;
+    public static String levelacess;
     public static String urlGeral = "http://redesdecomputadores.esy.es/checkin/v1/";
     private RequestQueue rq;
     private Map<String, String> params;
@@ -38,14 +40,24 @@ public class MainActivityAluno extends ActionBarActivity {
     ProgressDialog p_dialog;
     private int flag;
     CustomJsonObjectResquest cjor;
+    private Button cadastrar;
+    private View linha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_aluno);
 
+        cadastrar = (Button) findViewById(R.id.registrar);
+        linha = (View) findViewById(R.id.view);
         String login_adquirido = null;
         Intent intent = getIntent();
         login_adquirido = intent.getStringExtra("login");
+        levelacess = intent.getStringExtra("levelacess");
+        if (levelacess.equals("1")){
+               cadastrar.setVisibility(View.INVISIBLE);
+               linha.setVisibility(View.INVISIBLE);
+
+        }
         if (login_adquirido != null) {
             login = (EditText) findViewById(R.id.idLogin);
             login.setText(login_adquirido);
@@ -54,63 +66,68 @@ public class MainActivityAluno extends ActionBarActivity {
     }
 
     public void comunicacacao() {
-            p_dialog = ProgressDialog.show(this, "Verificando Login e Senha", "Aguarde...", false, true);
+        p_dialog = ProgressDialog.show(this, "Verificando Login e Senha", "Aguarde...", false, true);
 
-            url = urlGeral + "login";
-            params = new HashMap<String, String>();
-            params.put("email", login.getText().toString());
-            params.put("password", password.getText().toString());
+        url = urlGeral + "login";
+        params = new HashMap<String, String>();
+        params.put("email", login.getText().toString());
+        params.put("password", password.getText().toString());
 
-            cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-                //Função executada quando Houver sucesso
+        cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
+            //Função executada quando Houver sucesso
 
-                @Override
-                public void onResponse(JSONObject response) {
+            @Override
+            public void onResponse(JSONObject response) {
 
-                    Log.i("Teste2", "Sucesso: " + response);
-                    flag = 1;
-                    p_dialog.dismiss();
-                    try {
-
-                        Intent intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
-                        intent.putExtra("apiKey", response.getString("apiKey"));
-                        intent.putExtra("name", response.getString("name"));
-
-                        Toast.makeText(MainActivityAluno.this,
-                                "Login Efetuado com Sucesso.",
-                                Toast.LENGTH_SHORT)
-                                .show();
-
-                        startActivity(intent);
-                    } catch (JSONException e) {
-                        Toast.makeText(MainActivityAluno.this,
-                                "Login ou Senha incorretos.",
-                                Toast.LENGTH_SHORT)
-                                .show();
-                        e.printStackTrace();
-
+                Log.i("Teste2", "Sucesso: " + response);
+                flag = 1;
+                p_dialog.dismiss();
+                try {
+                    Intent intent;
+                    if(response.getString("tipo").equals("2") ) {
+                        intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
                     }
+                    else{
+                        intent = new Intent(MainActivityAluno.this, ModuloProfessor.class);
+                    }
+                    intent.putExtra("apiKey", response.getString("apiKey"));
+                    intent.putExtra("name", response.getString("name"));
+
+                    Toast.makeText(MainActivityAluno.this,
+                            "Login Efetuado com Sucesso.",
+                            Toast.LENGTH_SHORT)
+                            .show();
+
+                    startActivity(intent);
+                } catch (JSONException e) {
+                    Toast.makeText(MainActivityAluno.this,
+                            "Login ou Senha incorretos.",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    e.printStackTrace();
 
                 }
-            }, new Response.ErrorListener() {
-                //Função executada quando Houver Erro
 
-                @Override
-                public void onErrorResponse(VolleyError error) {
+            }
+        }, new Response.ErrorListener() {
+            //Função executada quando Houver Erro
 
-                    p_dialog.dismiss();
-                    if (error instanceof NoConnectionError) {
-                        Toast.makeText(MainActivityAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                    }  else{
-                        Toast.makeText(MainActivityAluno.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
-                    }
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
+                p_dialog.dismiss();
+                if (error instanceof NoConnectionError) {
+                    Toast.makeText(MainActivityAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                }  else{
+                    Toast.makeText(MainActivityAluno.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
                 }
-            });
+
+            }
+        });
 
 
-            cjor.setTag("tag");
-            rq.add(cjor);
+        cjor.setTag("tag");
+        rq.add(cjor);
 
     }
 
