@@ -30,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:singleLine = "true"
         android:hint="Digite a senha da aula"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -60,4 +61,4 @@
         android:text="Presente" />
 
 </RelativeLayout>
-<!-- From: file:/home/thiago/AndroidStudioProjects/frequenciafacil/app/src/main/res/layout/activity_modulo_aluno.xml -->
+<!-- From: file:/home/thiago/frequenciafacil/app/src/main/res/layout/activity_modulo_aluno.xml -->

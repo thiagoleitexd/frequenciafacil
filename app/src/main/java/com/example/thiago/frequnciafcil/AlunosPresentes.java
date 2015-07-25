@@ -2,12 +2,14 @@ package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -40,6 +42,8 @@ public class AlunosPresentes extends ActionBarActivity {
     private TextView total_presentes;
     public String [] matriculas;
     public String [] ids;
+    public String [] emails;
+    public String [] nomes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +60,13 @@ public class AlunosPresentes extends ActionBarActivity {
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(final JSONObject response) {
                 int i;
+                nomes = new String[200];
                 matriculas = new String[200];
+                emails = new String[200];
                 ids = new String[200];
+
                 try {
 
 
@@ -68,32 +75,47 @@ public class AlunosPresentes extends ActionBarActivity {
                         items.add("nome: " +lista_data.getJSONObject(i).get("nome").toString()
                                  +"\nmatricula: "+lista_data.getJSONObject(i).get("matricula").toString());
 
+                        nomes[i] = String.valueOf(lista_data.getJSONObject(i).get("nome").toString());
                         matriculas[i]= String.valueOf(lista_data.getJSONObject(i).get("matricula").toString());
                         ids[i] = String.valueOf(lista_data.getJSONObject(i).get("id").toString());
+//                        emails[i] = String.valueOf(lista_data.getJSONObject(i).get("email").toString());
+
                     }
                     lstItems = (ListView) findViewById(R.id.lista_presentes);
                     total_presentes.setText(String.valueOf(lista_data.length()));
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1,
-                            items);
+                            items){
+
+                        @Override
+                        public View getView(int position, View convertView,
+                                            ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                        /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.CYAN);
+
+                            return view;
+                        }
+                    };
+
                     lstItems.setAdapter(adapter);
 //parte referente  aos 'links' do list view
                     lstItems.setOnItemClickListener(new AdapterView.OnItemClickListener()
                     {
                         public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
                         {
-                            AlertDialog.Builder adb = new AlertDialog.Builder(
-                                    AlunosPresentes.this);
-                            adb.setTitle("Id Selecionado");
-                           // adb.setMessage("A matricula selecionada foi: "
-                             //       + matriculas[position]);
-                            adb.setMessage("A matricula selecionada foi: "
-                                    + ids[position]);
-                                    // + lstItems.getItemAtPosition(position));
-                                    adb.setPositiveButton("Ok", null);
-                            adb.show();
 
-                            retirarpresença(Integer.parseInt(ids[position]));
+                            Intent intent = new Intent(AlunosPresentes.this, PerfilAluno.class);
+                            intent.putExtra("nome",nomes[position]);
+                            intent.putExtra("email",emails[position]);
+                            intent.putExtra("matricula",matriculas[position]);
+                            intent.putExtra("id",ids[position]);
+                            startActivity(intent);
+
+                            //retirarpresença(Integer.parseInt(ids[position]));
 
                         }
                     });
@@ -131,50 +153,6 @@ public class AlunosPresentes extends ActionBarActivity {
 
 
 
-    public void retirarpresença (int id){
-
-    String url = MainActivityAluno.urlGeral + "removerPresenca";
-    params = new HashMap<String, String>();
-    params.put("id", String.valueOf(id));
-
-    CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-        //Função executada quando Houver sucesso
-
-        @Override
-        public void onResponse(JSONObject response) {
-
-            Log.i("Teste2", "Sucesso: " + response);
-
-
-            Toast.makeText(AlunosPresentes.this,
-                    "Presença retirada com sucesso",
-                    Toast.LENGTH_SHORT)
-                    .show();
-
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-
-        }
-    }, new Response.ErrorListener() {
-        //Função executada quando Houver Erro
-
-        @Override
-        public void onErrorResponse(VolleyError error) {
-
-            if (error instanceof NoConnectionError) {
-                Toast.makeText(AlunosPresentes.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-            }  else{
-                Toast.makeText(AlunosPresentes.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_LONG).show();
-            }
-
-        }
-    });
-
-    cjor.setTag("tag");
-    rq.add(cjor);
-
-}
 
 
 
@@ -201,11 +179,21 @@ public class AlunosPresentes extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                open(null);
+                return true;
+            case R.id.action_exit:
+                System.out.println("exit");
+                System.exit(1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }

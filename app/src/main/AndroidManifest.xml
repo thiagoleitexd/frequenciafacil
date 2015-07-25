@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivityAluno"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,20 +31,23 @@
         </activity>
         <activity
             android:name=".ModuloAluno"
-            android:label="@string/title_activity_modulo_aluno" >
+            android:label="@string/title_activity_modulo_aluno"
+            android:screenOrientation="portrait" >
         </activity>
-z
         <activity
             android:name=".Register"
-            android:label="@string/title_activity_register" >
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ModuloProfessor"
-            android:label="@string/title_activity_modulo_professor" >
+            android:label="@string/title_activity_modulo_professor"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".MainActivityProfessor"
-            android:label="@string/title_activity_main_activity_professor" >
+            android:label="@string/title_activity_main_activity_professor"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,20 +56,35 @@ z
         </activity>
         <activity
             android:name=".AlunoFaltas"
-            android:label="@string/title_activity_aluno_faltas" >
+            android:label="@string/title_activity_aluno_faltas"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AlunosPresentes"
-            android:label="@string/title_activity_alunos_presentes" >
+            android:label="@string/title_activity_alunos_presentes"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".PagelaVirtual"
-            android:label="@string/title_activity_pagela_virtual" >
+            android:label="@string/title_activity_pagela_virtual"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".PerfilAluno"
+            android:label="@string/title_activity_perfil_aluno" >
+        </activity>
+        <activity
+            android:name=".foto"
+            android:label="@string/title_activity_foto" >
+        </activity>
+        <activity
+            android:name=".Foto"
+            android:label="@string/title_activity_foto" >
         </activity>
     </application>
 

@@ -1,11 +1,14 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -69,7 +72,22 @@ public class AlunoFaltas extends ActionBarActivity {
                     total_faltas.setText(String.valueOf(lista_data.length()));
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1,
-                            items);
+                            items){
+
+                        @Override
+                        public View getView(int position, View convertView,
+                                            ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                        /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.parseColor("#B20000"));
+
+                            return view;
+                        }
+                    };
+
                     lstItems.setAdapter(adapter);
 
 

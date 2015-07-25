@@ -3,6 +3,7 @@ package com.example.thiago.frequnciafcil;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -48,6 +49,16 @@ public class MainActivityAluno extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_aluno);
 
+        login = (EditText) findViewById(R.id.idLogin);
+        password = (EditText) findViewById(R.id.idSenha);
+
+        SharedPreferences prefs = getSharedPreferences("loginEsenha", MODE_PRIVATE);
+        login.setText(prefs.getString("loginsalvo", "No login defined")) ;//"No name defined" is the default value.
+        password.setText(prefs.getString("senhasalvo", ""));
+
+
+
+
         cadastrar = (Button) findViewById(R.id.registrar);
         linha = (View) findViewById(R.id.view);
         String login_adquirido = null;
@@ -61,8 +72,8 @@ public class MainActivityAluno extends ActionBarActivity {
 
         }
         if (login_adquirido != null) {
-            login = (EditText) findViewById(R.id.idLogin);
             login.setText(login_adquirido);
+            password.setText("");
         }
         rq = Volley.newRequestQueue(MainActivityAluno.this);
     }
@@ -89,10 +100,18 @@ public class MainActivityAluno extends ActionBarActivity {
 
                     apikey = response.getString("apiKey");
 
+
+                    SharedPreferences.Editor editor = getSharedPreferences("loginEsenha", MODE_PRIVATE).edit();
+                    editor.putString("loginsalvo", login.getText().toString());
+                    editor.putString("senhasalvo", password.getText().toString());
+                    editor.commit();
+
+
+
+
                     if(response.getString("tipo").equals("2") && levelacess.equals("2") ) {
                         intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
-
                         intent.putExtra("name", response.getString("name"));
 
                         Toast.makeText(MainActivityAluno.this,
