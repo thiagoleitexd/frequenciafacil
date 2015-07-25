@@ -15,23 +15,9 @@
         android:id="@+id/textView13"
         android:textStyle="bold"
         android:textSize="45dp"
-        android:layout_marginTop="160dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/textView159"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Obtenha uma frequência acadêmica com apenas um clique"
-        android:id="@+id/textView149"
-        android:layout_below="@+id/textView13"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#ff424789"
-        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,6 +35,17 @@
         android:text="Conectando com o Servidor ..."
         android:id="@+id/textView16"
         android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="119dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Aguarde..."
+        android:id="@+id/textView15"
+        android:layout_below="@+id/textView16"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
 </RelativeLayout>

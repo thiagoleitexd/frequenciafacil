@@ -31,6 +31,7 @@ import java.util.TimerTask;
 
 public class MainActivityProfessor extends ActionBarActivity {
 
+    public static String apikey;
     private int contBack = 0;
     private RequestQueue rq;
     private Map<String, String> params;
@@ -47,6 +48,8 @@ public class MainActivityProfessor extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_professor);
 
+        Intent intent = getIntent();
+        apikey = intent.getStringExtra("apiKey");
 
         bstatus = (Button) findViewById(R.id.bstatus);
         bSenha = (Button) findViewById(R.id.bsenha);

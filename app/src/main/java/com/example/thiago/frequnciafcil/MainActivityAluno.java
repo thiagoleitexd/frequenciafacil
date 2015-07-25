@@ -29,6 +29,7 @@ import java.util.Map;
 
 
 public class MainActivityAluno extends ActionBarActivity {
+    public static String apikey;
     private int contBack =0;
     public static String levelacess;
     public static String urlGeral = "http://redesdecomputadores.esy.es/checkin/v1/";
@@ -53,6 +54,7 @@ public class MainActivityAluno extends ActionBarActivity {
         Intent intent = getIntent();
         login_adquirido = intent.getStringExtra("login");
         levelacess = intent.getStringExtra("levelacess");
+
         if (levelacess.equals("1")){
                cadastrar.setVisibility(View.INVISIBLE);
                linha.setVisibility(View.INVISIBLE);
@@ -84,25 +86,51 @@ public class MainActivityAluno extends ActionBarActivity {
                 p_dialog.dismiss();
                 try {
                     Intent intent;
-                    if(response.getString("tipo").equals("2") ) {
+
+                    apikey = response.getString("apiKey");
+
+                    if(response.getString("tipo").equals("2") && levelacess.equals("2") ) {
                         intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
-                    }
-                    else{
-                        intent = new Intent(MainActivityAluno.this, ModuloProfessor.class);
-                    }
-                    intent.putExtra("apiKey", response.getString("apiKey"));
-                    intent.putExtra("name", response.getString("name"));
+                        intent.putExtra("apiKey", response.getString("apiKey"));
 
-                    Toast.makeText(MainActivityAluno.this,
-                            "Login Efetuado com Sucesso.",
-                            Toast.LENGTH_SHORT)
-                            .show();
+                        intent.putExtra("name", response.getString("name"));
 
-                    startActivity(intent);
+                        Toast.makeText(MainActivityAluno.this,
+                                "Login Efetuado com Sucesso.",
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                        startActivity(intent);
+                    }
+                    else if(response.getString("tipo").equals("1") && levelacess.equals("1")) {
+                        intent = new Intent(MainActivityAluno.this, MainActivityProfessor.class);
+                        intent.putExtra("apiKey", response.getString("apiKey"));
+                        intent.putExtra("name", response.getString("name"));
+
+                        Toast.makeText(MainActivityAluno.this,
+                                "Login Efetuado com Sucesso.",
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                        startActivity(intent);
+                    }
+                    else if (levelacess.equals("1")) {
+                        Toast.makeText(MainActivityAluno.this,
+                                "Não há professor que corresponda com esse login e senha.",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                    else if (levelacess.equals("2")) {
+                        Toast.makeText(MainActivityAluno.this,
+                                "Não há aluno que corresponda com esse esse login e senha.",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+
                 } catch (JSONException e) {
                     Toast.makeText(MainActivityAluno.this,
                             "Login ou Senha incorretos.",
-                            Toast.LENGTH_SHORT)
+                            Toast.LENGTH_LONG)
                             .show();
                     e.printStackTrace();
 

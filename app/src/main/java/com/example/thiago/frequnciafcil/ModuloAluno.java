@@ -32,7 +32,6 @@ import java.util.Map;
 
 public class ModuloAluno extends ActionBarActivity {
 
-    public static String apikey;
     private RequestQueue rq;
     private String url;
     private String array_spinner[];
@@ -56,7 +55,6 @@ public class ModuloAluno extends ActionBarActivity {
         s.setAdapter(adapter);
 
         Intent intent = getIntent();
-        apikey = intent.getStringExtra("apiKey");
         String nome = intent.getStringExtra("name");
         apresentacao.setText("Olá, " + nome + "!\nSeja bem vindo ao aplicativo Pagela Virtual.");
 

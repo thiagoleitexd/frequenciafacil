@@ -51,7 +51,7 @@ public class CustomJsonArrayResquest extends Request<JSONArray> {
     public Map<String, String> getHeaders() throws AuthFailureError{
         HashMap<String, String> header = new HashMap<String, String>();
         Log.i("APIKEY", "APIKEY");
-        header.put("Authorization",ModuloAluno.apikey);
+        header.put("Authorization",MainActivityAluno.apikey);
         return (header);
     }
 
