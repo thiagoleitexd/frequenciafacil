@@ -53,7 +53,7 @@ public class MainActivityAluno extends ActionBarActivity {
         password = (EditText) findViewById(R.id.idSenha);
 
         SharedPreferences prefs = getSharedPreferences("loginEsenha", MODE_PRIVATE);
-        login.setText(prefs.getString("loginsalvo", "No login defined")) ;//"No name defined" is the default value.
+        login.setText(prefs.getString("loginsalvo", "")) ;//"No name defined" is the default value.
         password.setText(prefs.getString("senhasalvo", ""));
 
 
@@ -122,7 +122,7 @@ public class MainActivityAluno extends ActionBarActivity {
                         startActivity(intent);
                     }
                     else if(response.getString("tipo").equals("1") && levelacess.equals("1")) {
-                        intent = new Intent(MainActivityAluno.this, MainActivityProfessor.class);
+                        intent = new Intent(MainActivityAluno.this, MenuProfessor.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
                         intent.putExtra("name", response.getString("name"));
 

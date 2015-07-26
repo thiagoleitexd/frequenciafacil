@@ -50,7 +50,7 @@ public class AlunoFaltas extends ActionBarActivity {
         //inicio
         String url = MainActivityAluno.urlGeral + "listarFaltas";
 
-        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
+        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {

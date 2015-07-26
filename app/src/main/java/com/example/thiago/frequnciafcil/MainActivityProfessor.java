@@ -73,18 +73,13 @@ CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Met
 
                     if (erro.equals("9") || erro.equals("10")){
 
-                        Toast.makeText(MainActivityProfessor.this,
-                                "Status: Frequência Desligada",
-                                Toast.LENGTH_SHORT)
-                                .show();
-
                         new Timer().schedule(new TimerTask() {
                             public void run() {
                                 Intent intent = new Intent(MainActivityProfessor.this, ModuloProfessor.class);
                                 finish();
                                 startActivity(intent);
                             }
-                        }, 2000 /*amount of time in milliseconds before execution*/);
+                        }, 100 /*amount of time in milliseconds before execution*/);
 
                       }
                     else {

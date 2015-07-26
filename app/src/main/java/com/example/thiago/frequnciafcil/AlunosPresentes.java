@@ -72,13 +72,11 @@ public class AlunosPresentes extends ActionBarActivity {
 
                     JSONArray lista_data = (JSONArray) response.get("alunos");
                     for(i=0; i< lista_data.length(); i++){
-                        items.add("nome: " +lista_data.getJSONObject(i).get("nome").toString()
-                                 +"\nmatricula: "+lista_data.getJSONObject(i).get("matricula").toString());
-
+                        items.add(lista_data.getJSONObject(i).get("nome").toString());
                         nomes[i] = String.valueOf(lista_data.getJSONObject(i).get("nome").toString());
                         matriculas[i]= String.valueOf(lista_data.getJSONObject(i).get("matricula").toString());
                         ids[i] = String.valueOf(lista_data.getJSONObject(i).get("id").toString());
-//                        emails[i] = String.valueOf(lista_data.getJSONObject(i).get("email").toString());
+                        emails[i] = String.valueOf(lista_data.getJSONObject(i).get("email").toString());
 
                     }
                     lstItems = (ListView) findViewById(R.id.lista_presentes);
@@ -95,7 +93,7 @@ public class AlunosPresentes extends ActionBarActivity {
                             TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
                         /*YOUR CHOICE OF COLOR*/
-                            textView.setTextColor(Color.CYAN);
+                            textView.setTextColor(Color.parseColor("#0029A3"));
 
                             return view;
                         }

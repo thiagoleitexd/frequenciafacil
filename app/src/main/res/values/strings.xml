@@ -18,4 +18,6 @@
     <string name="title_activity_pagela_virtual_professor">Pagela Virtual - Professor</string>
     <string name="title_activity_perfil_aluno">PerfilAluno</string>
     <string name="title_activity_foto">foto</string>
+    <string name="title_activity_menu_professor">MenuProfessor</string>
+    <string name="title_activity_listar_alunos">ListarAlunos</string>
 </resources>

@@ -90,6 +90,14 @@
             android:name="com.example.thiago.frequnciafcil.Foto"
             android:label="@string/title_activity_foto" >
         </activity>
+        <activity
+            android:name="com.example.thiago.frequnciafcil.MenuProfessor"
+            android:label="Módulo do Professor" >
+        </activity>
+        <activity
+            android:name="com.example.thiago.frequnciafcil.ListarAlunos"
+            android:label="@string/title_activity_listar_alunos" >
+        </activity>
     </application>
 
 </manifest>

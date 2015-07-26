@@ -4,6 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#4DB6AC"
     tools:context="com.example.thiago.frequnciafcil.PerfilAluno">
 
     <ImageView
@@ -11,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/img"
-        android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/RperfilNome"
+        android:layout_alignStart="@+id/RperfilNome" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,9 +22,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nome:"
         android:id="@+id/perfilNome"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/perfilEmail"
-        android:layout_alignEnd="@+id/perfilEmail" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView17"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,8 +35,7 @@
         android:id="@+id/perfilMatricula"
         android:layout_below="@+id/perfilNome"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,40 +45,106 @@
         android:id="@+id/perfilEmail"
         android:layout_below="@+id/perfilMatricula"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/RperfilNome"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#0029A3"
+        android:layout_alignTop="@+id/perfilNome"
+        android:layout_alignLeft="@+id/RperfilMatricula"
+        android:layout_alignStart="@+id/RperfilMatricula" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/RperfilMatricula"
-        android:layout_above="@+id/perfilEmail"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#0029A3"
+        android:layout_above="@+id/RperfilEmail"
+        android:layout_alignLeft="@+id/RperfilEmail"
+        android:layout_alignStart="@+id/RperfilEmail" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/RperfilEmail"
-        android:layout_alignBottom="@+id/perfilEmail"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#0029A3"
+        android:layout_below="@+id/perfilMatricula"
+        android:layout_alignLeft="@+id/alunoFaltou"
+        android:layout_alignStart="@+id/alunoFaltou" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+
+        android:textColor="#fff1002d"
+        android:textSize="15sp"
+
         android:text="Retirar Presença"
         android:id="@+id/alunoFaltou"
-        android:layout_alignParentBottom="true"
         android:onClick="retirarpresencaaluno"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Informações Gerais"
+        android:textSize="25sp"
+        android:id="@+id/textView17"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/lista_faltas_perfil"
+        android:layout_below="@+id/textView18"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Datas das Faltas"
+        android:id="@+id/textView18"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/RperfilEmail"
+        android:layout_toRightOf="@+id/perfilMatricula"
+        android:layout_toEndOf="@+id/perfilMatricula" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total de Faltas:"
+        android:id="@+id/textView19"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/lista_faltas_perfil"
+        android:layout_toLeftOf="@+id/total_faltas_perfil"
+        android:layout_toStartOf="@+id/total_faltas_perfil"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/total_faltas_perfil"
+        android:layout_alignTop="@+id/textView19"
+        android:layout_alignRight="@+id/textView18"
+        android:layout_alignEnd="@+id/textView18" />
 
 </RelativeLayout>

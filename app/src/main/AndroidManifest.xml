@@ -86,6 +86,14 @@
             android:name=".Foto"
             android:label="@string/title_activity_foto" >
         </activity>
+        <activity
+            android:name=".MenuProfessor"
+            android:label="Módulo do Professor" >
+        </activity>
+        <activity
+            android:name=".ListarAlunos"
+            android:label="@string/title_activity_listar_alunos" >
+        </activity>
     </application>
 
 </manifest>
