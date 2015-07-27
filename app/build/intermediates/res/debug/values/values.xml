@@ -223,10 +223,13 @@
     <string name="title_activity_alunos_presentes">Alunos Presentes</string>
     <string name="title_activity_foto">foto</string>
     <string name="title_activity_listar_alunos">ListarAlunos</string>
+    <string name="title_activity_mail_sender">MailSenderActivity</string>
     <string name="title_activity_main_activity_professor">Modulo do Professor</string>
+    <string name="title_activity_menu_aluno">MenuAluno</string>
     <string name="title_activity_menu_professor">MenuProfessor</string>
     <string name="title_activity_modulo_aluno">Modulo do Aluno</string>
     <string name="title_activity_modulo_professor">Modulo do Professor</string>
+    <string name="title_activity_mudar_senha">MudarSenha</string>
     <string name="title_activity_pagela_virtual">Pagela Virtual</string>
     <string name="title_activity_pagela_virtual_professor">Pagela Virtual - Professor</string>
     <string name="title_activity_perfil_aluno">PerfilAluno</string>

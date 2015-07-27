@@ -322,7 +322,6 @@ public class ModuloProfessor extends ActionBarActivity {
                 Intent intent = new Intent(ModuloProfessor.this, AlunosPresentes.class);
                 startActivity(intent);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

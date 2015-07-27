@@ -2,32 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/libs/additionnal.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1ffb5af55322ffe61b8c57847336f6432fc09afd.jar" />
+        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
+        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/additionnal-7d98052b8ffd8e2b02a40390b3c348e511f4a5f2.jar" />
     </item>
     <item
-        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/libs/mail.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-d26cc9b40470adfed84528bbd886e2c28a03677a.jar" />
+        sha1="428e267abff0d10802ccde86b915da2c20471160">
+        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/mail-7bbc87393be0249d5aed9703070559ef0b295bb2.jar" />
     </item>
     <item
-        jar="/home/thiago/frequenciafacil/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jar="/home/thiago/AndroidStudioProjects/frequenciafacil/libs/activation.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/classes-39de81c1031cb70320e4df3641e43166f8d0962b.jar" />
-    </item>
-    <item
-        jar="/home/thiago/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/thiago/frequenciafacil/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-feaadab6f5fbe39c12f2de805d70dc2eb7a192dc.jar" />
+        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
+        <dex dex="/home/thiago/AndroidStudioProjects/frequenciafacil/app/build/intermediates/pre-dexed/debug/activation-a9e28735a876beef284603ad13e1f96c81bf10d6.jar" />
     </item>
 
 </items>

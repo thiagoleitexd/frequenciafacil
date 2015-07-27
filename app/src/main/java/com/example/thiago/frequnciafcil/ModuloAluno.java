@@ -54,10 +54,6 @@ public class ModuloAluno extends ActionBarActivity {
         android.R.layout.simple_spinner_item, array_spinner);
         s.setAdapter(adapter);
 
-        Intent intent = getIntent();
-        String nome = intent.getStringExtra("name");
-        apresentacao.setText("Olá, " + nome + "!\nSeja bem vindo ao aplicativo Pagela Virtual.");
-
         rq = Volley.newRequestQueue(ModuloAluno.this);
     }
 

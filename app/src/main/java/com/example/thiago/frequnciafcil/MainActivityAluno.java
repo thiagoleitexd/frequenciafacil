@@ -110,7 +110,7 @@ public class MainActivityAluno extends ActionBarActivity {
 
 
                     if(response.getString("tipo").equals("2") && levelacess.equals("2") ) {
-                        intent = new Intent(MainActivityAluno.this, ModuloAluno.class);
+                        intent = new Intent(MainActivityAluno.this, MenuAluno.class);
                         intent.putExtra("apiKey", response.getString("apiKey"));
                         intent.putExtra("name", response.getString("name"));
 

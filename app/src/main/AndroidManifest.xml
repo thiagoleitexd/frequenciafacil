@@ -94,6 +94,14 @@
             android:name=".ListarAlunos"
             android:label="@string/title_activity_listar_alunos" >
         </activity>
+        <activity
+            android:name=".MudarSenha"
+            android:label="@string/title_activity_mudar_senha" >
+        </activity>
+        <activity
+            android:name=".MenuAluno"
+            android:label="@string/title_activity_menu_aluno" >
+        </activity>
     </application>
 
 </manifest>
