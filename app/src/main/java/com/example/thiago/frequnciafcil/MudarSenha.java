@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -36,9 +37,6 @@ public class MudarSenha extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mudar_senha);
 
-        passwordAntiga = (EditText) findViewById(R.id.senhaAntiga);
-        passwordNovo = (EditText) findViewById(R.id.senha1);
-        passwordNovo2 = (EditText) findViewById(R.id.senha22);
 
 
 
@@ -72,10 +70,18 @@ public class MudarSenha extends ActionBarActivity {
         params = new HashMap<String, String>();
 
 
-        String url = MainActivityAluno.urlGeral + "mudarSenha";
+        String url = MainActivityAluno.urlGeral + "alterarSenha";
 
         int cont = 0;
         String passNovo1, passNovo2, passAntiga;
+
+
+        passwordAntiga = (EditText) findViewById(R.id.senhaAntiga);
+        passwordNovo = (EditText) findViewById(R.id.senha1);
+        passwordNovo2 = (EditText) findViewById(R.id.senha22);
+
+
+
         passAntiga = passwordAntiga.getText().toString();
         passNovo1 = passwordNovo.getText().toString();
         passNovo2 = passwordNovo2.getText().toString();
@@ -107,13 +113,38 @@ public class MudarSenha extends ActionBarActivity {
 
                         Log.i("Teste2", "Sucesso: " + response);
 
-                        Intent intent = new Intent(MudarSenha.this, MainActivityAluno.class);
-                        Toast.makeText(MudarSenha.this,
-                                "Mudança da Senha Realizada com Sucesso.",
-                                Toast.LENGTH_LONG)
-                                .show();
-                        finish();
-                        startActivity(intent);
+                        try {
+                            if (response.getString("code").equals("false")) {
+
+                                Toast.makeText(MudarSenha.this,
+                                        "Mudança da Senha Realizada com Sucesso.",
+                                        Toast.LENGTH_LONG)
+                                        .show();
+                                Intent intent = new Intent(MudarSenha.this, PagelaVirtual.class);
+                                finish();
+                                startActivity(intent);
+                            }
+
+                            else{
+
+                                Toast.makeText(MudarSenha.this,
+                                        "Senha atual não corresponde com este Usuário ",
+                                        Toast.LENGTH_LONG)
+                                        .show();
+
+
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+
+
                     }
 
                 }, new Response.ErrorListener() {
