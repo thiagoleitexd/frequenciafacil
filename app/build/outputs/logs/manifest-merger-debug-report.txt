@@ -136,39 +136,33 @@ ADDED from AndroidManifest.xml:77:9
 		ADDED from AndroidManifest.xml:79:13
 	android:name
 		ADDED from AndroidManifest.xml:78:13
-activity#com.example.thiago.frequnciafcil.foto
-ADDED from AndroidManifest.xml:81:9
-	android:label
-		ADDED from AndroidManifest.xml:83:13
-	android:name
-		ADDED from AndroidManifest.xml:82:13
 activity#com.example.thiago.frequnciafcil.Foto
-ADDED from AndroidManifest.xml:85:9
+ADDED from AndroidManifest.xml:82:9
 	android:label
-		ADDED from AndroidManifest.xml:87:13
+		ADDED from AndroidManifest.xml:84:13
 	android:name
-		ADDED from AndroidManifest.xml:86:13
+		ADDED from AndroidManifest.xml:83:13
 activity#com.example.thiago.frequnciafcil.MenuProfessor
-ADDED from AndroidManifest.xml:89:9
+ADDED from AndroidManifest.xml:86:9
 	android:label
-		ADDED from AndroidManifest.xml:91:13
+		ADDED from AndroidManifest.xml:88:13
 	android:name
-		ADDED from AndroidManifest.xml:90:13
+		ADDED from AndroidManifest.xml:87:13
 activity#com.example.thiago.frequnciafcil.ListarAlunos
-ADDED from AndroidManifest.xml:93:9
+ADDED from AndroidManifest.xml:90:9
 	android:label
-		ADDED from AndroidManifest.xml:95:13
+		ADDED from AndroidManifest.xml:92:13
 	android:name
-		ADDED from AndroidManifest.xml:94:13
+		ADDED from AndroidManifest.xml:91:13
 activity#com.example.thiago.frequnciafcil.MudarSenha
-ADDED from AndroidManifest.xml:97:9
+ADDED from AndroidManifest.xml:94:9
 	android:label
-		ADDED from AndroidManifest.xml:99:13
+		ADDED from AndroidManifest.xml:96:13
 	android:name
-		ADDED from AndroidManifest.xml:98:13
+		ADDED from AndroidManifest.xml:95:13
 activity#com.example.thiago.frequnciafcil.MenuAluno
-ADDED from AndroidManifest.xml:101:9
+ADDED from AndroidManifest.xml:98:9
 	android:label
-		ADDED from AndroidManifest.xml:103:13
+		ADDED from AndroidManifest.xml:100:13
 	android:name
-		ADDED from AndroidManifest.xml:102:13
+		ADDED from AndroidManifest.xml:99:13

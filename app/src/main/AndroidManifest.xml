@@ -78,13 +78,10 @@
             android:name=".PerfilAluno"
             android:label="@string/title_activity_perfil_aluno" >
         </activity>
-        <activity
-            android:name=".foto"
-            android:label="@string/title_activity_foto" >
-        </activity>
+
         <activity
             android:name=".Foto"
-            android:label="@string/title_activity_foto" >
+            android:label="Selecione uma Foto" >
         </activity>
         <activity
             android:name=".MenuProfessor"
@@ -96,11 +93,11 @@
         </activity>
         <activity
             android:name=".MudarSenha"
-            android:label="@string/title_activity_mudar_senha" >
+            android:label="Alteração de Senha" >
         </activity>
         <activity
             android:name=".MenuAluno"
-            android:label="@string/title_activity_menu_aluno" >
+            android:label="Modulo do Aluno" >
         </activity>
     </application>
 

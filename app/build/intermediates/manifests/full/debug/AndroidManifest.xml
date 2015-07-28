@@ -83,12 +83,8 @@
             android:label="@string/title_activity_perfil_aluno" >
         </activity>
         <activity
-            android:name="com.example.thiago.frequnciafcil.foto"
-            android:label="@string/title_activity_foto" >
-        </activity>
-        <activity
             android:name="com.example.thiago.frequnciafcil.Foto"
-            android:label="@string/title_activity_foto" >
+            android:label="Selecione uma Foto" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuProfessor"
@@ -100,11 +96,11 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MudarSenha"
-            android:label="@string/title_activity_mudar_senha" >
+            android:label="Alteração de Senha" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuAluno"
-            android:label="@string/title_activity_menu_aluno" >
+            android:label="Modulo do Aluno" >
         </activity>
     </application>
 

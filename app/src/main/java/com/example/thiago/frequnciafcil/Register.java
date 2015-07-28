@@ -76,6 +76,16 @@ public class Register extends ActionBarActivity {
             params.put("password", password.getText().toString());
             params.put("matricula", mat.getText().toString());
 
+
+            //estas variaveis vao ser usadas, caso a FOTO funcione!
+            final String nomeIntent,emailIntent,passwordIntent,matriculaIntent;
+            nomeIntent = nome.getText().toString();
+            passwordIntent = password.getText().toString();
+            matriculaIntent = mat.getText().toString();
+            //fim da declaracao de variaveis que serão usadas caso a FOTO FUNCIONE
+
+
+
                 CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
                     //Função executada quando Houver sucesso
@@ -95,6 +105,17 @@ public class Register extends ActionBarActivity {
 
                             Intent intent = new Intent(Register.this, MainActivityAluno.class);
                             intent.putExtra("login", login.getText().toString());
+
+
+
+                            //essas variaveis vao ser usadas caso o lance da FOTO FUNCIONE
+                            intent.putExtra("name", nomeIntent);
+                            intent.putExtra("senha", passwordIntent);
+                            intent.putExtra("matricula", matriculaIntent);
+                            //fim das variaveis que vao ser usadas caso o lance da foto funcione !!!
+
+
+
                             intent.putExtra("levelacess", "2");
                             Toast.makeText(Register.this,
                                     "Cadastro Efetuado com sucesso",
