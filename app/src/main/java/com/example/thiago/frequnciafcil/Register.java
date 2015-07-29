@@ -93,6 +93,7 @@ public class Register extends ActionBarActivity {
                                     "Selecione uma foto",
                                     Toast.LENGTH_LONG)
                                     .show();
+
                             startActivity(intent);
         }
     }

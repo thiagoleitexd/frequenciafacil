@@ -80,31 +80,38 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.PerfilAluno"
-            android:label="@string/title_activity_perfil_aluno" >
+            android:label="@string/title_activity_perfil_aluno"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.Foto"
-            android:label="Selecione uma Foto" >
+            android:label="Selecione uma Foto"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuProfessor"
-            android:label="Módulo do Professor" >
+            android:label="Módulo do Professor"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.ListarAlunos"
-            android:label="@string/title_activity_listar_alunos" >
+            android:label="@string/title_activity_listar_alunos"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MudarSenha"
-            android:label="Alteração de Senha" >
+            android:label="Alteração de Senha"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuAluno"
-            android:label="Modulo do Aluno" >
+            android:label="Modulo do Aluno"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.ExibirFoto"
-            android:label="@string/title_activity_exibir_foto" >
+            android:label="@string/title_activity_exibir_foto"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

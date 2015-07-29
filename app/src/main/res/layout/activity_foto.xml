@@ -33,26 +33,11 @@
         android:layout_below="@+id/bfoto"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:id="@+id/registrarFoto"
-        android:layout_below="@+id/ivSelectedImage"
-        android:layout_centerHorizontal="true"
-        android:text="Registrar" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Escolha uma foto sua"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Escolha uma foto para finalizar seu cadastro!"
         android:id="@+id/textView23"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

@@ -111,6 +111,7 @@ public class AlunosPresentes extends ActionBarActivity {
                             intent.putExtra("email",emails[position]);
                             intent.putExtra("matricula",matriculas[position]);
                             intent.putExtra("id",ids[position]);
+                            finish();
                             startActivity(intent);
 
                             //retirarpresença(Integer.parseInt(ids[position]));

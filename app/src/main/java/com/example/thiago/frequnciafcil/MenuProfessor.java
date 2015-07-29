@@ -75,8 +75,6 @@ public class MenuProfessor extends ActionBarActivity {
     }
     public void exibirAlunos (View V){
 
-        System.out.println("não está feito ainda");
-
         Intent intent = new Intent(MenuProfessor.this, ListarAlunos.class);
 
         startActivity(intent);

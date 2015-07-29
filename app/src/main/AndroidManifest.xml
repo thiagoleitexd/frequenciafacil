@@ -76,30 +76,37 @@
         </activity>
         <activity
             android:name=".PerfilAluno"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_perfil_aluno" >
         </activity>
         <activity
             android:name=".Foto"
+            android:screenOrientation="portrait"
             android:label="Selecione uma Foto" >
         </activity>
         <activity
             android:name=".MenuProfessor"
+            android:screenOrientation="portrait"
             android:label="Módulo do Professor" >
         </activity>
         <activity
             android:name=".ListarAlunos"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_listar_alunos" >
         </activity>
         <activity
             android:name=".MudarSenha"
+            android:screenOrientation="portrait"
             android:label="Alteração de Senha" >
         </activity>
         <activity
             android:name=".MenuAluno"
+            android:screenOrientation="portrait"
             android:label="Modulo do Aluno" >
         </activity>
         <activity
             android:name=".ExibirFoto"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_exibir_foto" >
         </activity>
     </application>

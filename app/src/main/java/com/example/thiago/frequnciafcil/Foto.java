@@ -129,7 +129,7 @@ public class Foto extends ActionBarActivity {
 
             Bitmap bitmap = imagemrandom;
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
 
             byte[] b = baos.toByteArray();
             final String fotoString = Base64.encodeToString(b, Base64.DEFAULT); // converte de base 64 byte em string -> esse valor final que irá para o banco !
@@ -169,36 +169,25 @@ public class Foto extends ActionBarActivity {
 
 
                     try {
-
                         //erro = response.getString("error");
                         String msg = response.getString("message");
                         String codigo = response.getString("code");
 
                         if (codigo.equals("1")) {
 
-                            fotoWS = response.getString("foto"); //essa é a foto em string, este valor que irá para o BANCO DE DADOS
                             Log.i("Teste2", "Sucesso: " + response);
-                            System.out.println(fotoWS);
-                            //ordem de conversão : Bitmap(imagem) -> byte 64 -> String
-                            //conversão da volta: String -> byte 64 -> bitmap(imagem)
-
-                            byte[] voltadafoto = Base64.decode(fotoWS, Base64.DEFAULT); //convertendo o fotoWS(valor que está no banco) em byte 64
-                            Bitmap bitmap4 = BitmapFactory.decodeByteArray(voltadafoto, 0, voltadafoto.length); //finalmente transformando o byte 64 em bitmap !!
-                            ivSelectedImage.setImageBitmap(bitmap4); //mostrando a imagem !!!
-
-
-
                             Toast.makeText(Foto.this,
                                     "Cadastro Realizado com Sucesso!",
                                     Toast.LENGTH_LONG)
                                     .show();
 
-
                             Intent intent = new Intent(Foto.this, MainActivityAluno.class);
                             intent.putExtra("levelacess", "2");
                             intent.putExtra("login", emailIntent);
-                            startActivity(intent);
 
+                            finish();
+
+                            startActivity(intent);
 
                         }
                         else if (codigo.equals("2")) {
