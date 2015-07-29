@@ -70,111 +70,31 @@ public class Register extends ActionBarActivity {
 
         if(validade && validade2 && validade3) {
 
-            params = new HashMap<String, String>();
-            params.put("name", nome.getText().toString());
-            params.put("email", login.getText().toString());
-            params.put("password", password.getText().toString());
-            params.put("matricula", mat.getText().toString());
-
 
             //estas variaveis vao ser usadas, caso a FOTO funcione!
             final String nomeIntent,emailIntent,passwordIntent,matriculaIntent;
             nomeIntent = nome.getText().toString();
             passwordIntent = password.getText().toString();
             matriculaIntent = mat.getText().toString();
+            emailIntent = login.getText().toString();
+
             //fim da declaracao de variaveis que serão usadas caso a FOTO FUNCIONE
 
-
-
-                CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-
-                    //Função executada quando Houver sucesso
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            //erro = response.getString("error");
-                            msg = response.getString("message");
-                            codigo = response.getString("code");
-                        } catch (JSONException e) {
-                            System.out.println("testeeeeee");
-                            e.printStackTrace();
-                        }
-
-                        if (codigo.equals("1")) {
-                            Log.i("Teste2", "Sucesso: " + response);
-
-                            Intent intent = new Intent(Register.this, MainActivityAluno.class);
-                            intent.putExtra("login", login.getText().toString());
-
-
-
                             //essas variaveis vao ser usadas caso o lance da FOTO FUNCIONE
+                            Intent intent = new Intent(Register.this, Foto.class);
                             intent.putExtra("name", nomeIntent);
-                            intent.putExtra("senha", passwordIntent);
+                            intent.putExtra("password", passwordIntent);
                             intent.putExtra("matricula", matriculaIntent);
-                            //fim das variaveis que vao ser usadas caso o lance da foto funcione !!!
-
-
+                            intent.putExtra("email", emailIntent);
+                          //fim das variaveis que vao ser usadas caso o lance da foto funcione !!!
 
                             intent.putExtra("levelacess", "2");
                             Toast.makeText(Register.this,
-                                    "Cadastro Efetuado com sucesso",
+                                    "Redirecionando para a tela de inserir Foto",
                                     Toast.LENGTH_LONG)
                                     .show();
                             startActivity(intent);
-                        }
-                        else if (codigo.equals("2")) {
-                            Toast.makeText(Register.this,
-                                    "Esse E-mail já está cadastrado no sistema. Tente outro.",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-
-                        }
-                        else if (codigo.equals("3")) {
-                            Toast.makeText(Register.this,
-                                    "Essa Matrícula ja está cadastrada no sistema. Tente outro.",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-
-                        }
-                        else if (codigo.equals("4")) {
-                            Toast.makeText(Register.this,
-                                    "Esse E-mail e essa Matrícula já estão cadastrados no sistema.",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-
-                        }
-                        else{
-                            Toast.makeText(Register.this,
-                                    "Erro de comunicação com o servidor/Banco de Dados. Tente Mais Tarde.",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    //Função executada quando Houver Erro
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error instanceof NoConnectionError) {
-                            Toast.makeText(Register.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            Toast.makeText(Register.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                cjor.setTag("tag");
-                rq.add(cjor);
-
         }
-    }
-
-    @Override
-    public void onStop(){
-        super.onStop();
-        rq.cancelAll("tag");
     }
 
     @Override
