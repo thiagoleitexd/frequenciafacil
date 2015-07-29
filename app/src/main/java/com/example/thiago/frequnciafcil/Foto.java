@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,13 +24,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -127,19 +124,15 @@ public class Foto extends ActionBarActivity {
             // decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
-            final Bitmap bitmap = BitmapFactory.decodeFileDescriptor(imageSource, null, o2);
-            //ivSelectedImage.setImageBitmap(bitmap);
 
+            final Bitmap imagemrandom = BitmapFactory.decodeFileDescriptor(imageSource, null, o2);
 
-            //converter
-            Bitmap bitmap2 = bitmap;
+            Bitmap bitmap = imagemrandom;
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap2.compress(Bitmap.CompressFormat.PNG, 50, stream);
-            byte[] foto = stream.toByteArray(); //em tese, isso que mandarei para o banco de dados !!!! detalhe: a variavel foto é um byteArray !!!!!!!
-            foto_escolhida  = foto;
-            //fim converter
-
+            byte[] b = baos.toByteArray();
+            final String fotoString = Base64.encodeToString(b, Base64.DEFAULT); // converte de base 64 byte em string -> esse valor final que irá para o banco !
 
             //gambi
 
@@ -162,8 +155,6 @@ public class Foto extends ActionBarActivity {
             params.put("password", passwordIntent);
             params.put("matricula", matriculaIntent);
 
-            final String fotoString = new String(foto_escolhida);
-
             params.put("foto", fotoString);
 
             System.out.println(nomeIntent);
@@ -177,32 +168,68 @@ public class Foto extends ActionBarActivity {
                 //Função executada quando Houver sucesso
                 @Override
                 public void onResponse(JSONObject response) {
+
+
                     try {
+
                         //erro = response.getString("error");
                         String msg = response.getString("message");
                         String codigo = response.getString("code");
-                        fotoWS = response.getString("foto");
-                        Log.i("Teste2", "Sucesso: " + response);
-                        System.out.println(fotoWS);
+
+                        if (codigo.equals("1")) {
+
+                            fotoWS = response.getString("foto"); //essa é a foto em string, este valor que irá para o BANCO DE DADOS
+                            Log.i("Teste2", "Sucesso: " + response);
+                            System.out.println(fotoWS);
+                            //ordem de conversão : Bitmap(imagem) -> byte 64 -> String
+                            //conversão da volta: String -> byte 64 -> bitmap(imagem)
+
+                            byte[] voltadafoto = Base64.decode(fotoWS, Base64.DEFAULT); //convertendo o fotoWS(valor que está no banco) em byte 64
+                            Bitmap bitmap4 = BitmapFactory.decodeByteArray(voltadafoto, 0, voltadafoto.length); //finalmente transformando o byte 64 em bitmap !!
+                            ivSelectedImage.setImageBitmap(bitmap4); //mostrando a imagem !!!
 
 
-                        byte[] fotoemBytes = fotoWS.getBytes(Charset.forName("UTF-8"));
 
-                        Bitmap bitmap3;
+                            Toast.makeText(Foto.this,
+                                    "Cadastro Realizado com Sucesso!",
+                                    Toast.LENGTH_LONG)
+                                    .show();
 
-                        bitmap3 = BitmapFactory.decodeByteArray(fotoemBytes, 0, fotoemBytes.length);
 
-                        ivSelectedImage.setImageBitmap(bitmap3);
+                            Intent intent = new Intent(Foto.this, MainActivityAluno.class);
+                            intent.putExtra("levelacess", "2");
+                            intent.putExtra("login", emailIntent);
+                            startActivity(intent);
 
-                        //decodeUri2(uriGeral);
 
-                        //byte[] fotodevolta = fotoString.getBytes();
-                        //Bitmap bitmap4 = BitmapFactory.decodeByteArray(fotodevolta, 0, fotodevolta.length); //o banco me enviará o byteArray, e eu converterei em imagem ! a variavel foto é um byteArray !!!!!!!
-                        //ivSelectedImage.setImageBitmap(bitmap4);
+                        }
+                        else if (codigo.equals("2")) {
+                            Toast.makeText(Foto.this,
+                                    "Esse E-mail já está cadastrado no sistema. Tente outro.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
 
-                        //byte[] fotodevolta = fotoString.getBytes();
-                        //Bitmap bitmap4 = BitmapFactory.decodeByteArray(fotodevolta, 0, fotodevolta.length); //o banco me enviará o byteArray, e eu converterei em imagem ! a variavel foto é um byteArray !!!!!!!
-                        //ivSelectedImage.setImageBitmap(bitmap4);
+                        }
+                        else if (codigo.equals("3")) {
+                            Toast.makeText(Foto.this,
+                                    "Essa Matrícula ja está cadastrada no sistema. Tente outro.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+                        }
+                        else if (codigo.equals("4")) {
+                            Toast.makeText(Foto.this,
+                                    "Esse E-mail e essa Matrícula já estão cadastrados no sistema.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+
+                        }
+                        else{
+                            Toast.makeText(Foto.this,
+                                    "Erro de comunicação com o servidor/Banco de Dados. Tente Mais Tarde.",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
 
 
                     } catch (JSONException e) {
