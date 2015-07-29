@@ -134,8 +134,6 @@ public class Foto extends ActionBarActivity {
             byte[] b = baos.toByteArray();
             final String fotoString = Base64.encodeToString(b, Base64.DEFAULT); // converte de base 64 byte em string -> esse valor final que irá para o banco !
 
-            //gambi
-
 
             //estas variaveis vao ser usadas, caso a FOTO funcione!
             String url = MainActivityAluno.urlGeral + "register";

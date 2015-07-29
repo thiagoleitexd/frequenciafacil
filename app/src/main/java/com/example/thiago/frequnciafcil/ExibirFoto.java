@@ -43,126 +43,64 @@ public class ExibirFoto extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exibir_foto);
         fotoAluno = (ImageView) findViewById(R.id.fotoAluno);
-        rq = Volley.newRequestQueue(ExibirFoto.this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_exibir_foto, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void decodeUri(Uri uri) {
-        ParcelFileDescriptor parcelFD = null;
-        try {
-            parcelFD = getContentResolver().openFileDescriptor(uri, "r");
-            FileDescriptor imageSource = parcelFD.getFileDescriptor();
-
-            // Decode image size
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeFileDescriptor(imageSource, null, o);
-
-            // the new size we want to scale to
-            final int REQUIRED_SIZE = 1024;
-
-            // Find the correct scale value. It should be the power of 2.
-            int width_tmp = o.outWidth, height_tmp = o.outHeight;
-            scale = 1;
-            while (true) {
-                if (width_tmp < REQUIRED_SIZE && height_tmp < REQUIRED_SIZE) {
-                    break;
-                }
-                width_tmp /= 2;
-                height_tmp /= 2;
-                scale *= 2;
-            }
-
-            // decode with inSampleSize
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-
-            final Bitmap imagemrandom = BitmapFactory.decodeFileDescriptor(imageSource, null, o2);
-
-            Bitmap bitmap = imagemrandom;
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-
-            byte[] b = baos.toByteArray();
-            final String fotoString = Base64.encodeToString(b, Base64.DEFAULT); // converte de base 64 byte em string -> esse valor final que irá para o banco !
-
-            //gambi
+        //inicio
 
 
-            //estas variaveis vao ser usadas, caso a FOTO funcione!
-            String url = MainActivityAluno.urlGeral + "exibirFoto";
+        String url = MainActivityAluno.urlGeral + "exibirFoto";
 
-            //fim da declaracao de variaveis que serão usadas caso a FOTO FUNCIONE
+        //fim da declaracao de variaveis que serão usadas caso a FOTO FUNCIONE
 
-            params = new HashMap<String, String>();
+        params = new HashMap<String, String>();
 
-            Intent ReceberId = getIntent();
-            String idDaIntent = ReceberId.getStringExtra("id");
+        Intent ReceberId = getIntent();
+        String idDaIntent = ReceberId.getStringExtra("id");
 
-            params.put("id", idDaIntent);
-
-
-            CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-
-                //Função executada quando Houver sucesso
-                @Override
-                public void onResponse(JSONObject response) {
+        params.put("id", idDaIntent);
 
 
-                    try {
+        CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
-                        //erro = response.getString("error");
-                        String msg = response.getString("message");
-                        String codigo = response.getString("code");
+            //Função executada quando Houver sucesso
+            @Override
+            public void onResponse(JSONObject response) {
 
-                        if (codigo.equals("1")) {
 
-                            fotoWS = response.getString("foto"); //essa é a foto em string, este valor que irá para o BANCO DE DADOS
-                            Log.i("Teste2", "Sucesso: " + response);
-                            System.out.println(fotoWS);
-                            //ordem de conversão : Bitmap(imagem) -> byte 64 -> String
-                            //conversão da volta: String -> byte 64 -> bitmap(imagem)
+                try {
 
+                    //erro = response.getString("error");
+                    String msg = response.getString("message");
+                    String codigo = response.getString("code");
+
+                    if (codigo.equals("false")) {
+
+
+                        fotoWS = response.getString("foto"); //essa é a foto em string, este valor que irá para o BANCO DE DADOS
+                        Log.i("Teste2", "Sucesso: " + response);
+
+                        //ordem de conversão : Bitmap(imagem) -> byte 64 -> String
+                        //conversão da volta: String -> byte 64 -> bitmap(imagem)
+                        try {
                             byte[] voltadafoto = Base64.decode(fotoWS, Base64.DEFAULT); //convertendo o fotoWS(valor que está no banco) em byte 64
                             Bitmap bitmap4 = BitmapFactory.decodeByteArray(voltadafoto, 0, voltadafoto.length); //finalmente transformando o byte 64 em bitmap !!
                             fotoAluno.setImageBitmap(bitmap4); //mostrando a imagem !!!
-
-
-
-                            Toast.makeText(ExibirFoto.this,
-                                    "Foto Carregada com sucesso",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-
-
-
-
-
+                        }catch (Exception e){
+                            System.out.println("Erro : "+e.getMessage());
                         }
-                      } catch (JSONException e) {
-                        e.printStackTrace();
+
+
+                        Toast.makeText(ExibirFoto.this,
+                                "Foto Carregada com sucesso",
+                                Toast.LENGTH_LONG)
+                                .show();
+
+
+
+
+
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 /*
 
 
@@ -207,21 +145,52 @@ public class ExibirFoto extends ActionBarActivity {
 
                     */
 
-                }
-            }, new Response.ErrorListener() {
-                //Função executada quando Houver Erro
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    //if (error instanceof NoConnectionError) {
-                    //    Toast.makeText(Foto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                    //} else {
-                    //    Toast.makeText(Foto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-                    //}
-                }
-            });
+            }
+        }, new Response.ErrorListener() {
+            //Função executada quando Houver Erro
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //if (error instanceof NoConnectionError) {
+                //    Toast.makeText(Foto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                //} else {
+                //    Toast.makeText(Foto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                //}
+            }
+        });
 
-            cjor.setTag("tag");
-            rq.add(cjor);
+        rq = Volley.newRequestQueue(ExibirFoto.this);
+        cjor.setTag("tag");
+        rq.add(cjor);
+
+
+
+        //fim
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_exibir_foto, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void decodeUri() {
 
 
             //fim da gambi
@@ -235,18 +204,7 @@ public class ExibirFoto extends ActionBarActivity {
             //ivSelectedImage.setImageBitmap(bitmap3);
             //fim desconverter
 
-        } catch (FileNotFoundException e) {
-            // handle errors
-        } catch (IOException e) {
-            // handle errors
-        } finally {
-            if (parcelFD != null)
-                try {
-                    parcelFD.close();
-                } catch (IOException e) {
-                    // ignored
-                }
         }
     }
 
-}
+

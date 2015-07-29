@@ -90,7 +90,7 @@ public class Register extends ActionBarActivity {
 
                             intent.putExtra("levelacess", "2");
                             Toast.makeText(Register.this,
-                                    "Redirecionando para a tela de inserir Foto",
+                                    "Selecione uma foto",
                                     Toast.LENGTH_LONG)
                                     .show();
                             startActivity(intent);
