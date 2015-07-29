@@ -221,6 +221,7 @@
     <eat-comment/>
     <string name="title_activity_aluno_faltas">Relatório de Faltas</string>
     <string name="title_activity_alunos_presentes">Alunos Presentes</string>
+    <string name="title_activity_exibir_foto">Exibir Foto</string>
     <string name="title_activity_foto">foto</string>
     <string name="title_activity_listar_alunos">ListarAlunos</string>
     <string name="title_activity_mail_sender">MailSenderActivity</string>

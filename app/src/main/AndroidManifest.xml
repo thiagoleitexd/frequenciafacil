@@ -78,7 +78,6 @@
             android:name=".PerfilAluno"
             android:label="@string/title_activity_perfil_aluno" >
         </activity>
-
         <activity
             android:name=".Foto"
             android:label="Selecione uma Foto" >
@@ -98,6 +97,10 @@
         <activity
             android:name=".MenuAluno"
             android:label="Modulo do Aluno" >
+        </activity>
+        <activity
+            android:name=".ExibirFoto"
+            android:label="@string/title_activity_exibir_foto" >
         </activity>
     </application>
 

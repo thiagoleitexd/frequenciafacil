@@ -102,6 +102,10 @@
             android:name="com.example.thiago.frequnciafcil.MenuAluno"
             android:label="Modulo do Aluno" >
         </activity>
+        <activity
+            android:name="com.example.thiago.frequnciafcil.ExibirFoto"
+            android:label="@string/title_activity_exibir_foto" >
+        </activity>
     </application>
 
 </manifest>

@@ -23,4 +23,5 @@
     <string name="title_activity_mail_sender">MailSenderActivity</string>
     <string name="title_activity_mudar_senha">MudarSenha</string>
     <string name="title_activity_menu_aluno">MenuAluno</string>
+    <string name="title_activity_exibir_foto">Exibir Foto</string>
 </resources>
