@@ -296,17 +296,6 @@ public class Foto extends ActionBarActivity {
             rq.add(cjor);
 
 
-            //fim da gambi
-
-
-            //desconverter
-
-            //byte[] fotoemBytes = fotoWS.getBytes(Charset.forName("UTF-8"));
-            //Bitmap bitmap3 = BitmapFactory.decodeByteArray(FotoemBytes, 0, FotoemBytes.length);
-
-            //ivSelectedImage.setImageBitmap(bitmap3);
-            //fim desconverter
-
         } catch (FileNotFoundException e) {
             // handle errors
         } catch (IOException e) {

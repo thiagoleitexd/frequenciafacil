@@ -1,6 +1,7 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class ModuloAluno extends ActionBarActivity {
     private Map<String, String> params;
     //private HashMap<String, String> header;
     private TextView senhaAula;
+    ProgressDialog p_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,11 +105,16 @@ public class ModuloAluno extends ActionBarActivity {
 
             params = new HashMap<String, String>();
             params.put("password", senhaAula.getText().toString());
+            p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
             CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
                 //Função executada quando Houver sucesso
                 @Override
                 public void onResponse(JSONObject response) {
+
+
+                    p_dialog.dismiss();
+
                     Log.i("Teste2", "Sucesso: " + response);
 
                     try {
@@ -173,6 +180,9 @@ public class ModuloAluno extends ActionBarActivity {
                 //Função executada quando Houver Erro
                 @Override
                 public void onErrorResponse(VolleyError error) {
+
+                    p_dialog.dismiss();
+
                     if (error instanceof NoConnectionError) {
                         Toast.makeText(ModuloAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet", Toast.LENGTH_LONG).show();
                     }

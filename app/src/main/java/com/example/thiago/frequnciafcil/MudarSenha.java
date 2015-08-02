@@ -1,5 +1,6 @@
 package com.example.thiago.frequnciafcil;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +31,7 @@ public class MudarSenha extends ActionBarActivity {
     private EditText passwordAntiga;
     private EditText passwordNovo;
     private EditText passwordNovo2;
+    ProgressDialog p_dialog;
 
 
     @Override
@@ -105,12 +107,15 @@ public class MudarSenha extends ActionBarActivity {
                 params.put("oldpassword", passAntiga);
                 params.put("newpassword", passNovo1);
 
+                p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
+
                 CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
                     //Função executada quando Houver sucesso
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        p_dialog.dismiss();
                         Log.i("Teste2", "Sucesso: " + response);
 
                         try {
@@ -148,9 +153,14 @@ public class MudarSenha extends ActionBarActivity {
                     }
 
                 }, new Response.ErrorListener() {
+
                     //Função executada quando Houver Erro
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+
+                        p_dialog.dismiss();
+
                         if (error instanceof NoConnectionError) {
                             Toast.makeText(MudarSenha.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                         } else {

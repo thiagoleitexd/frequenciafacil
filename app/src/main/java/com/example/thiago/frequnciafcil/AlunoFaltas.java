@@ -1,10 +1,10 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +37,7 @@ public class AlunoFaltas extends ActionBarActivity {
     private ListView lstItems;
     private List<String> items;
     private TextView total_faltas;
+    ProgressDialog p_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +50,20 @@ public class AlunoFaltas extends ActionBarActivity {
 
         //inicio
         String url = MainActivityAluno.urlGeral + "listarFaltas";
-
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
         CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {
+                p_dialog.dismiss();
                 int i;
 
                 try {
                     JSONArray lista_data = (JSONArray) response.get("data");
 
-
+                    if(lista_data.length() == 0){
+                        Toast.makeText(AlunoFaltas.this, "Este Aluno não possui faltas.", Toast.LENGTH_LONG).show();
+                    }
 
                     for (i = 0; i < lista_data.length(); i++) {
                         items.add(lista_data.get(i).toString());
@@ -101,6 +105,7 @@ public class AlunoFaltas extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
+                p_dialog.dismiss();
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(AlunoFaltas.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 } else {

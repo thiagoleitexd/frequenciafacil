@@ -1,11 +1,11 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +43,7 @@ public class ListarAlunos extends ActionBarActivity {
     public String [] ids;
     public String [] emails;
     public String [] nomes;
+    ProgressDialog p_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class ListarAlunos extends ActionBarActivity {
         total_all = (TextView) findViewById(R.id.total_all);
         //inicio
         String url = MainActivityAluno.urlGeral+"listarAlunos";
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
@@ -66,6 +67,7 @@ public class ListarAlunos extends ActionBarActivity {
                 matriculas = new String[200];
                 emails = new String[200];
                 ids = new String[200];
+                p_dialog.dismiss();
 
                 try {
 
@@ -114,13 +116,14 @@ public class ListarAlunos extends ActionBarActivity {
                             intent.putExtra("tirarbotao","1");
                             startActivity(intent);
 
-                            //retirarpresença(Integer.parseInt(ids[position]));
+
 
                         }
                     });
 // fim da parte referente  aos 'links' do list view
 
                 } catch (JSONException e) {
+                    p_dialog.dismiss();
                     e.printStackTrace();
                 }
 
@@ -132,6 +135,7 @@ public class ListarAlunos extends ActionBarActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error instanceof NoConnectionError) {
+                    p_dialog.dismiss();
                     Toast.makeText(ListarAlunos.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }
                 else {

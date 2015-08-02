@@ -1,11 +1,11 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +43,7 @@ public class AlunosPresentes extends ActionBarActivity {
     public String [] ids;
     public String [] emails;
     public String [] nomes;
+    ProgressDialog p_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class AlunosPresentes extends ActionBarActivity {
 
         //inicio
         String url = MainActivityAluno.urlGeral+"listarAlunosPresentes";
-
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
@@ -66,6 +66,7 @@ public class AlunosPresentes extends ActionBarActivity {
                 matriculas = new String[200];
                 emails = new String[200];
                 ids = new String[200];
+                p_dialog.dismiss();
 
                 try {
 
@@ -131,6 +132,10 @@ public class AlunosPresentes extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                p_dialog.dismiss();
+
+
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(AlunosPresentes.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }

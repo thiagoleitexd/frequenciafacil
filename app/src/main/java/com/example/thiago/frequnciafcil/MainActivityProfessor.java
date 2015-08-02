@@ -57,13 +57,14 @@ public class MainActivityProfessor extends ActionBarActivity {
         senhaGerada = (EditText) findViewById(R.id.senhaAulaProf);
         params = new HashMap<String, String>();
         url = MainActivityAluno.urlGeral+"fecharFrequencia";
+
         p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
-CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
+        CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {
-
+                p_dialog.dismiss();
 
                 Log.i("Teste3", "Sucesso: " + response);
 
@@ -110,7 +111,6 @@ CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Met
 
             }
         });
-        p_dialog.dismiss();
         rq = Volley.newRequestQueue(MainActivityProfessor.this);
         cjor.setTag("tag");
         rq.add(cjor);

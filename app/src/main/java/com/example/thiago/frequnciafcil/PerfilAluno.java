@@ -1,6 +1,7 @@
 package com.example.thiago.frequnciafcil;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -50,6 +51,7 @@ public class PerfilAluno extends ActionBarActivity {
     private ListView lstItems;
     private List<String> items;
     private TextView total_faltas_perfil;
+    ProgressDialog p_dialog;
 
 
     @Override
@@ -89,16 +91,24 @@ public class PerfilAluno extends ActionBarActivity {
         params = new HashMap<String, String>();
         params.put("id", id);
 
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
+
+
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
             @Override
             public void onResponse(JSONObject response) {
+
+                p_dialog.dismiss();
+
                 int i;
 
                 try {
                     JSONArray lista_data = (JSONArray) response.get("data");
 
-
+                    if(lista_data.length() == 0){
+                        Toast.makeText(PerfilAluno.this, "Este Aluno não possui faltas.", Toast.LENGTH_LONG).show();
+                    }
 
                     for (i = 0; i < lista_data.length(); i++) {
                         items.add(lista_data.get(i).toString());
@@ -139,10 +149,13 @@ public class PerfilAluno extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                p_dialog.dismiss();
+
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(PerfilAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(PerfilAluno.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PerfilAluno.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -243,13 +256,13 @@ public class PerfilAluno extends ActionBarActivity {
         String url = MainActivityAluno.urlGeral + "removerPresenca";
         params = new HashMap<String, String>();
         params.put("id", String.valueOf(id));
-
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
 
             @Override
             public void onResponse(JSONObject response) {
-
+                p_dialog.dismiss();
                 Log.i("Teste2", "Sucesso: " + response);
 
 
@@ -268,7 +281,7 @@ public class PerfilAluno extends ActionBarActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                p_dialog.dismiss();
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(PerfilAluno.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }  else{

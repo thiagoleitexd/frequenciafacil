@@ -118,6 +118,7 @@ public class ModuloProfessor extends ActionBarActivity {
 
         params.put("password", getSenhadaAula());
 //inicio
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
@@ -126,6 +127,7 @@ public class ModuloProfessor extends ActionBarActivity {
             @Override
             public void onResponse(JSONObject response) {
 
+                p_dialog.dismiss();
 
                 Log.i("Teste3", "Sucesso: " + response);
 
@@ -184,6 +186,7 @@ public class ModuloProfessor extends ActionBarActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                p_dialog.dismiss();
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }
@@ -224,6 +227,9 @@ public class ModuloProfessor extends ActionBarActivity {
 
 //inicio
         url = MainActivityAluno.urlGeral+"fecharFrequencia";
+
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
+
         CustomJsonObjectResquestProf cjor = new CustomJsonObjectResquestProf(Request.Method.GET, url, params, new Response.Listener<JSONObject>() {
             //Função executada quando Houver sucesso
 
@@ -234,7 +240,7 @@ public class ModuloProfessor extends ActionBarActivity {
                 String msg = null;
 
                 Log.i("Teste3", "Sucesso: " + response);
-
+                p_dialog.dismiss();
                 try {
                     String erro = response.getString("code");
                     msg = response.getString("message");
@@ -281,6 +287,9 @@ public class ModuloProfessor extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                p_dialog.dismiss();
+
                 if (error instanceof NoConnectionError) {
                     Toast.makeText(ModuloProfessor.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
                 }

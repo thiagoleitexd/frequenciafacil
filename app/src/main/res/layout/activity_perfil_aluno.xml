@@ -18,29 +18,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Nome:"
+        android:textColor="@color/material_blue_grey_950"
         android:id="@+id/perfilNome"
-        android:layout_below="@+id/textView17"
+        android:textStyle="bold"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=".........................................."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=".."
         android:id="@+id/RperfilNome"
         android:visibility="invisible"
-        android:textStyle="bold"
+
         android:textColor="#0029A3"
         android:layout_above="@+id/perfilMatricula"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Matrícula:"
+        android:textStyle="bold"
+        android:textColor="@color/material_blue_grey_950"
         android:id="@+id/perfilMatricula"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/perfilNome"
@@ -49,8 +52,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="E-mail:"
+        android:textStyle="bold"
+        android:textColor="@color/material_blue_grey_950"
         android:id="@+id/perfilEmail"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/perfilMatricula"
@@ -60,8 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text=".................................."
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=".."
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/RperfilMatricula"
         android:visibility="invisible"
         android:textColor="#0029A3"
@@ -73,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="........................................."
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=".."
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/RperfilEmail"
         android:visibility="invisible"
         android:textColor="#0029A3"
@@ -83,7 +88,6 @@
         android:layout_alignStart="@+id/RperfilMatricula" />
 
     <Button
-
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
@@ -91,26 +95,14 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-
         android:textColor="#fff1002d"
         android:textSize="15sp"
-
         android:text="Retirar Presença"
-        android:layout_marginTop="5dp"
         android:id="@+id/alunoFaltou"
         android:onClick="retirarpresencaaluno"
         android:layout_below="@+id/textView19"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Informações Gerais"
-        android:textSize="25sp"
-        android:id="@+id/textView17"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="14dp"
+        android:layout_centerHorizontal="true"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -138,6 +130,7 @@
         android:id="@+id/textView19"
         android:layout_below="@+id/lista_faltas_perfil"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="42dp"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -146,11 +139,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/total_faltas_perfil"
         android:text=".....:"
-
-        android:layout_above="@+id/alunoFaltou"
+        android:layout_below="@+id/lista_faltas_perfil"
         android:layout_toRightOf="@+id/textView19"
         android:layout_toEndOf="@+id/textView19"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
 
 </RelativeLayout>

@@ -1,11 +1,10 @@
 package com.example.thiago.frequnciafcil;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,10 +23,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +33,7 @@ public class ExibirFoto extends ActionBarActivity {
     private int scale;
     private String fotoWS;
     private ImageView fotoAluno;
+    ProgressDialog p_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +54,7 @@ public class ExibirFoto extends ActionBarActivity {
 
         params.put("id", idDaIntent);
 
+        p_dialog = ProgressDialog.show(this, "Conectando ao Servidor", "Aguarde...", false, true);
 
         CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
@@ -64,6 +62,7 @@ public class ExibirFoto extends ActionBarActivity {
             @Override
             public void onResponse(JSONObject response) {
 
+                p_dialog.dismiss();
 
                 try {
 
@@ -150,11 +149,12 @@ public class ExibirFoto extends ActionBarActivity {
             //Função executada quando Houver Erro
             @Override
             public void onErrorResponse(VolleyError error) {
-                //if (error instanceof NoConnectionError) {
-                //    Toast.makeText(Foto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                //} else {
-                //    Toast.makeText(Foto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-                //}
+                p_dialog.dismiss();
+                if (error instanceof NoConnectionError) {
+                    Toast.makeText(ExibirFoto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(ExibirFoto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

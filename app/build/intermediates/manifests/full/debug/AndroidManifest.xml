@@ -13,14 +13,13 @@
     <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/pvirtual3"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -40,7 +39,7 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.ModuloProfessor"
-            android:label="@string/title_activity_modulo_professor"
+            android:label="Abrir Frequência"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -70,7 +69,7 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.PerfilAluno"
-            android:label="@string/title_activity_perfil_aluno"
+            android:label="Perfil do Aluno"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -80,12 +79,12 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuProfessor"
-            android:label="Módulo do Professor"
+            android:label="Menu - Professor"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.ListarAlunos"
-            android:label="@string/title_activity_listar_alunos"
+            android:label="Exibir Todos os Alunos"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -95,12 +94,12 @@
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.MenuAluno"
-            android:label="Modulo do Aluno"
+            android:label="Menu - Aluno"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.thiago.frequnciafcil.ExibirFoto"
-            android:label="@string/title_activity_exibir_foto"
+            android:label="Exibir Foto"
             android:screenOrientation="portrait" >
         </activity>
     </application>

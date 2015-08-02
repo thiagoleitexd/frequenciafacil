@@ -10,11 +10,11 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:id="@+id/lista_faltas"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView11"
-        android:layout_marginBottom="120dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,32 +22,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total de Faltas:"
         android:id="@+id/textView10"
-        android:layout_marginBottom="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/total_faltas"
-        android:layout_toStartOf="@+id/total_faltas"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp" />
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/lista_faltas"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/total_faltas"
-        android:layout_marginRight="54dp"
-        android:layout_marginEnd="54dp"
-        android:layout_alignBaseline="@+id/textView10"
-        android:layout_alignBottom="@+id/textView10"
-        android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Relatório de Faltas"
-        android:id="@+id/textView11"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/textView10"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
 
 </RelativeLayout>
