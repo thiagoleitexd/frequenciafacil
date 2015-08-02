@@ -1,41 +1,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-android:paddingRight="@dimen/activity_horizontal_margin"
-android:paddingTop="@dimen/activity_vertical_margin"
-android:paddingBottom="@dimen/activity_vertical_margin"
+xmlns:tools="http://schemas.android.com/tools"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
 android:background="#4DB6AC"
 tools:context="com.example.thiago.frequnciafcil.Register">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastro"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/inicioR"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-    android:text="Registrar"
-    android:id="@+id/idCadastrarR"
-
-    android:textColor="#FFFFFF"
-    android:textSize="15sp"
-    android:layout_width="150dp"
-    android:layout_height="50dp"
-    android:background="@drawable/buttonshape"
-    android:shadowColor="#A8A8A8"
-    android:shadowDx="0"
-    android:shadowDy="0"
-    android:shadowRadius="5"
-
-    android:onClick="callJsonobject2"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true" />
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/app_name"
-    android:textSize="25sp"
-    android:textStyle="bold"
-    android:id="@+id/inicioR"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="28dp"
-    android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Nome:"
+        android:id="@+id/textView"
+        android:singleLine="false"
+        android:phoneNumber="false"
+        android:password="false"
+        android:textStyle="bold"
+        android:layout_below="@+id/inicioR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -49,6 +45,17 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Email:"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/idNomeR"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +68,36 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Matrícula:"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/idLoginR"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idMatriculaR"
+        android:hint="Insira sua matrícula"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Senha:"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/idMatriculaR"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -79,17 +116,15 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idMatriculaR"
-        android:hint="Insira sua matrícula"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Confirmar Senha:"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/idSenhaR"
+        android:textStyle="bold" />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -108,64 +143,22 @@ tools:context="com.example.thiago.frequnciafcil.Register">
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Nome:"
-        android:id="@+id/textView"
-        android:layout_below="@+id/inicioR"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp"
-        android:singleLine="false"
-        android:phoneNumber="false"
-        android:password="false"
-        android:textStyle="bold" />
+    <Button
+        android:text="Avançar"
+        android:id="@+id/idCadastrarR"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:onClick="callJsonobject2"
+        android:layout_below="@+id/idSenha2R"
+        android:layout_alignLeft="@+id/inicioR"
+        android:layout_alignStart="@+id/inicioR" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Email:"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/idNomeR"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Matrícula:"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/idLoginR"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Senha:"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/idMatriculaR"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Confirmar Senha:"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/idSenhaR"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
-
-
-</RelativeLayout><!-- From: file:/home/thiago/frequenciafacil/app/src/main/res/layout/activity_register.xml -->
+</RelativeLayout>
+<!-- From: file:/home/thiago/frequenciafacil/app/src/main/res/layout/activity_register.xml -->

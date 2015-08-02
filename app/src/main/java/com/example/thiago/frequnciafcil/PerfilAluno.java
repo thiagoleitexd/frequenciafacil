@@ -57,17 +57,17 @@ public class PerfilAluno extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_aluno);
 
-        nome = (TextView) findViewById(R.id.RperfilNome);
-        matricula = (TextView) findViewById(R.id.RperfilMatricula);
-        email = (TextView) findViewById(R.id.RperfilEmail);
+        nome = (TextView) findViewById(R.id.perfilNome);
+        matricula = (TextView) findViewById(R.id.perfilMatricula);
+        email = (TextView) findViewById(R.id.perfilEmail);
 
         String url2 = "https://www.google.com.br/logos/doodles/2015/special-olympics-world-games-2015-5710263202349056-hp.gif";
 
         Intent intent = getIntent();
-        nome.setText(intent.getStringExtra("nome"));
-        matricula.setText(intent.getStringExtra("matricula"));
+        nome.setText("nome: "+intent.getStringExtra("nome"));
+        matricula.setText("matrícula: "+intent.getStringExtra("matricula"));
         id = intent.getStringExtra("id");
-        email.setText(intent.getStringExtra("email"));
+        email.setText("email: "+intent.getStringExtra("email"));
 
         String botaoinvisivel = intent.getStringExtra("tirarbotao");
 

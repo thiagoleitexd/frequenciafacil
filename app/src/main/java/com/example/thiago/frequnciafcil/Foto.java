@@ -1,5 +1,6 @@
 package com.example.thiago.frequnciafcil;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Foto extends ActionBarActivity {
+    ProgressDialog p_dialog;
     private int scale;
     private RequestQueue rq;
     private Map<String, String> params;
@@ -160,6 +163,7 @@ public class Foto extends ActionBarActivity {
             System.out.println(passwordIntent);
             System.out.println(emailIntent);
 
+            p_dialog = ProgressDialog.show(this, "Conectando-se com o servidor", "Aguarde...", false, true);
 
             CustomJsonObjectResquest cjor = new CustomJsonObjectResquest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
 
@@ -174,7 +178,7 @@ public class Foto extends ActionBarActivity {
                         String codigo = response.getString("code");
 
                         if (codigo.equals("1")) {
-
+                            p_dialog.dismiss();
                             Log.i("Teste2", "Sucesso: " + response);
                             Toast.makeText(Foto.this,
                                     "Cadastro Realizado com Sucesso!",
@@ -191,31 +195,39 @@ public class Foto extends ActionBarActivity {
 
                         }
                         else if (codigo.equals("2")) {
+                            p_dialog.dismiss();
                             Toast.makeText(Foto.this,
                                     "Esse E-mail já está cadastrado no sistema. Tente outro.",
                                     Toast.LENGTH_LONG)
                                     .show();
+                                    finish();
 
                         }
                         else if (codigo.equals("3")) {
+                            p_dialog.dismiss();
                             Toast.makeText(Foto.this,
                                     "Essa Matrícula ja está cadastrada no sistema. Tente outro.",
                                     Toast.LENGTH_LONG)
                                     .show();
+                                    finish();
 
                         }
                         else if (codigo.equals("4")) {
+                            p_dialog.dismiss();
                             Toast.makeText(Foto.this,
                                     "Esse E-mail e essa Matrícula já estão cadastrados no sistema.",
                                     Toast.LENGTH_LONG)
                                     .show();
+                                    finish();
 
                         }
                         else{
+                            p_dialog.dismiss();
                             Toast.makeText(Foto.this,
                                     "Erro de comunicação com o servidor/Banco de Dados. Tente Mais Tarde.",
                                     Toast.LENGTH_LONG)
                                     .show();
+                                    finish();
                         }
 
 
@@ -271,11 +283,12 @@ public class Foto extends ActionBarActivity {
                 //Função executada quando Houver Erro
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    //if (error instanceof NoConnectionError) {
-                    //    Toast.makeText(Foto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
-                    //} else {
-                    //    Toast.makeText(Foto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
-                    //}
+                    p_dialog.dismiss();
+                    if (error instanceof NoConnectionError) {
+                        Toast.makeText(Foto.this, "Não foi possível conectar com o servidor, verifique sua conexão de internet.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Foto.this, "Problema na conexão com o servidor ou com sua internet, tente mais tarde.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

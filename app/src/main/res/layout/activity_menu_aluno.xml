@@ -19,9 +19,10 @@
         android:shadowRadius="5"
         android:text="Marcar Presença"
         android:id="@+id/marcarPresenca"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="30dp"
         android:onClick="marcarPresenca"
         android:layout_below="@+id/textView23aluno"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -37,10 +38,9 @@
         android:text="Exibir Faltas"
         android:id="@+id/dataDasFaltas"
         android:onClick="dataDasFaltas"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/marcarPresenca"
-        android:layout_alignLeft="@+id/marcarPresenca"
-        android:layout_alignStart="@+id/marcarPresenca"
-        android:layout_marginTop="94dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,14 +51,14 @@
         android:textStyle="bold"
         android:textSize="25sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/apresentacao"
+        android:visibility="invisible"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

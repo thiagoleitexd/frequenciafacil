@@ -13,17 +13,16 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/senha22"
-        android:hint="Insira novamente sua NOVA senha"
+        android:hint="Insira de novo a NOVA senha"
         android:fontFamily="sans-serif"
         android:textIsSelectable="false"
         android:singleLine="false"
         android:password="true"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/senha2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="148dp"
-        android:layout_alignRight="@+id/senha1"
-        android:layout_alignEnd="@+id/senha1" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +31,7 @@
         android:text="Confirmar a NOVA Senha:"
         android:id="@+id/senha2"
         android:textStyle="bold"
-        android:layout_above="@+id/senha22"
+        android:layout_below="@+id/senha1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -47,10 +46,9 @@
         android:textIsSelectable="false"
         android:singleLine="false"
         android:password="true"
-        android:layout_above="@+id/senha2"
+        android:layout_below="@+id/senha11"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="19dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -61,24 +59,9 @@
         android:text="Nova Senha:"
         android:id="@+id/senha11"
         android:textStyle="bold"
-        android:layout_above="@+id/senha1"
+        android:layout_below="@+id/senhaAntiga"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/senhaAntiga"
-        android:layout_above="@+id/senha11"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Insira sua Senha Atual"
-        android:fontFamily="sans-serif" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,10 +69,27 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Senha Atual:"
         android:id="@+id/textView21"
-        android:layout_above="@+id/senhaAntiga"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView22"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textStyle="bold" />
+        android:layout_marginTop="38dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/senhaAntiga"
+        android:hint="Insira sua Senha Atual"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/textView21"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -97,10 +97,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Mudança de Senha"
         android:id="@+id/textView22"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="28dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:textColor="#FFFFFF"
@@ -116,8 +115,8 @@
 
         android:text="Mudar Senha"
         android:id="@+id/mudarSenha"
-        android:layout_below="@+id/senha2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:onClick="mudarSenha" />
+        android:onClick="mudarSenha"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/senha22"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

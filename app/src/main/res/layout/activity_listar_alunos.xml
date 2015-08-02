@@ -13,17 +13,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/lista_all"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="65dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="120dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total de Alunos:"
         android:id="@+id/textView10all"
-        android:layout_marginLeft="55dp"
-        android:layout_marginStart="55dp"
         android:layout_alignTop="@+id/total_all"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -31,20 +29,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/total_all"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginBottom="79dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/textView10all"
         android:layout_toEndOf="@+id/textView10all"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Relatório de Alunos"
+        android:text="Todos os Alunos"
         android:id="@+id/textView12"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

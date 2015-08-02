@@ -7,7 +7,8 @@
     android:background="#4DB6AC"
     tools:context="com.example.thiago.frequnciafcil.ModuloProfessor">
 
-    <TextView android:text="Pagela Virtual - Professor" android:layout_width="wrap_content"
+    <TextView android:text="Abrir Frequência"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titulo"
         android:textSize="25dp"
@@ -99,8 +100,6 @@
         android:id="@+id/textView8"
         android:gravity="center_vertical"
         android:layout_below="@+id/titulo"
-        android:layout_alignLeft="@+id/titulo"
-        android:layout_alignStart="@+id/titulo"
         android:layout_marginTop="58dp"
         android:layout_toLeftOf="@+id/bsenha"
         android:layout_toStartOf="@+id/bsenha" />

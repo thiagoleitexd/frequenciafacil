@@ -13,28 +13,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/lista_presentes"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="65dp"/>
+        android:layout_marginBottom="120dp"
+        android:layout_below="@+id/textView12"
+/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total de Presentes:"
+
         android:id="@+id/textView10"
+        android:layout_above="@+id/lista_presentes"
+        android:layout_marginBottom="90dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/textView12"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/total_presentes"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
         android:layout_alignBaseline="@+id/textView10"
         android:layout_alignBottom="@+id/textView10"
         android:layout_toRightOf="@+id/textView10"
@@ -44,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Relatório de Alunos Presentes"
+        android:text="Alunos Presentes"
         android:id="@+id/textView12"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

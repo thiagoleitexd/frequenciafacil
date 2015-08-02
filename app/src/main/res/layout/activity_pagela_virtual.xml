@@ -7,32 +7,6 @@
     android:background="#4DB6AC"
     tools:context="com.example.thiago.frequnciafcil.PagelaVirtual">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pagela Virtual"
-        android:id="@+id/textView13"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:textSize="45dp"
-        android:layout_marginTop="94dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Garanta sua frequência acadêmica com apenas um clique"
-        android:id="@+id/textView14"
-        android:layout_below="@+id/textView13"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#ff424789"
-        android:gravity="center" />
-
     <Button
         android:textColor="#FFFFFF"
         android:textSize="15sp"
@@ -46,10 +20,10 @@
 
         android:text="Eu sou Aluno"
         android:id="@+id/botaoAluno"
-        android:layout_below="@+id/textView14"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:onClick="irTelaAluno" />
+        android:onClick="irTelaAluno"
+        android:layout_alignTop="@+id/botaoProfessor"
+        android:layout_toLeftOf="@+id/botaoProfessor"
+        android:layout_toStartOf="@+id/botaoProfessor" />
 
     <Button
         android:textColor="#fff1002d"
@@ -63,9 +37,19 @@
 
         android:text="Eu Sou Professor"
         android:id="@+id/botaoProfessor"
+        android:onClick="irTelaProfessor"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp"
-        android:onClick="irTelaProfessor" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="115dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/pvirtual3"
+        android:layout_above="@+id/botaoAluno"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
