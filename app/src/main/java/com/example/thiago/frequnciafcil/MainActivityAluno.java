@@ -43,7 +43,7 @@ public class MainActivityAluno extends ActionBarActivity {
     private int flag;
     CustomJsonObjectResquest cjor;
     private Button cadastrar;
-    private View linha;
+    //private View linha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class MainActivityAluno extends ActionBarActivity {
 
 
         cadastrar = (Button) findViewById(R.id.registrar);
-        linha = (View) findViewById(R.id.view);
+        //linha = (View) findViewById(R.id.view);
         String login_adquirido = null;
         Intent intent = getIntent();
         login_adquirido = intent.getStringExtra("login");
@@ -68,7 +68,7 @@ public class MainActivityAluno extends ActionBarActivity {
 
         if (levelacess.equals("1")){
                cadastrar.setVisibility(View.INVISIBLE);
-               linha.setVisibility(View.INVISIBLE);
+               //linha.setVisibility(View.INVISIBLE);
 
         }
         if (login_adquirido != null) {

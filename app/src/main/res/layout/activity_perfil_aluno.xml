@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Nome:"
-        android:textColor="@color/material_blue_grey_950"
+        android:textColor="#0029A3"
         android:id="@+id/perfilNome"
         android:textStyle="bold"
         android:layout_alignParentLeft="true"
@@ -43,7 +43,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Matrícula:"
         android:textStyle="bold"
-        android:textColor="@color/material_blue_grey_950"
+        android:textColor="#0029A3"
         android:id="@+id/perfilMatricula"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/perfilNome"
@@ -55,7 +55,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="E-mail:"
         android:textStyle="bold"
-        android:textColor="@color/material_blue_grey_950"
+        android:textColor="#0029A3"
         android:id="@+id/perfilEmail"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/perfilMatricula"
@@ -100,49 +100,41 @@
         android:text="Retirar Presença"
         android:id="@+id/alunoFaltou"
         android:onClick="retirarpresencaaluno"
-        android:layout_below="@+id/textView19"
-        android:layout_marginTop="14dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/lista_faltas_perfil"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:id="@+id/lista_faltas_perfil"
-        android:layout_below="@+id/textView18"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Datas das Faltas:"
+        android:textStyle="bold"
+        android:id="@+id/textView18"
+        android:layout_above="@+id/lista_faltas_perfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Datas das Faltas"
-        android:id="@+id/textView18"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/perfilEmail"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold"
         android:text="Total de Faltas:"
         android:id="@+id/textView19"
-        android:layout_below="@+id/lista_faltas_perfil"
+        android:textColor="#0029A3"
+        android:layout_below="@+id/perfilEmail"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="42dp"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/total_faltas_perfil"
-        android:text=".....:"
-        android:layout_below="@+id/lista_faltas_perfil"
-        android:layout_toRightOf="@+id/textView19"
-        android:layout_toEndOf="@+id/textView19"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp" />
+
+
 
 </RelativeLayout>

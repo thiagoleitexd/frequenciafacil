@@ -66,10 +66,10 @@ public class PerfilAluno extends ActionBarActivity {
         String url2 = "https://www.google.com.br/logos/doodles/2015/special-olympics-world-games-2015-5710263202349056-hp.gif";
 
         Intent intent = getIntent();
-        nome.setText("nome: "+intent.getStringExtra("nome"));
-        matricula.setText("matrícula: "+intent.getStringExtra("matricula"));
+        nome.setText("Nome: "+intent.getStringExtra("nome"));
+        matricula.setText("Matrícula: "+intent.getStringExtra("matricula"));
         id = intent.getStringExtra("id");
-        email.setText("email: "+intent.getStringExtra("email"));
+        email.setText("E-mail: "+intent.getStringExtra("email"));
 
         String botaoinvisivel = intent.getStringExtra("tirarbotao");
 
@@ -84,7 +84,7 @@ public class PerfilAluno extends ActionBarActivity {
         //inicio list view
 
         items = new ArrayList<String>();
-        total_faltas_perfil = (TextView) findViewById(R.id.total_faltas_perfil);
+        total_faltas_perfil = (TextView) findViewById(R.id.textView19);
         lstItems = (ListView) findViewById(R.id.lista_faltas_perfil);
 
         String url = MainActivityAluno.urlGeral + "listarFaltas2";
@@ -117,7 +117,7 @@ public class PerfilAluno extends ActionBarActivity {
 //                          System.out.println(lista_data.getJSONObject(i).get("nome"));
 //                          System.out.println(lista_data.getJSONObject(i).get("matricula"));
                     }
-                    total_faltas_perfil.setText(String.valueOf(lista_data.length()));
+                    total_faltas_perfil.setText("Total de Faltas: "+String.valueOf(lista_data.length()));
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1,
                             items){
